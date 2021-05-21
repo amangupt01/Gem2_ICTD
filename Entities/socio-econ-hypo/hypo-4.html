@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Map of Districts of India</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../library/leaflet/leaflet.css">
+	<script type="text/javascript" src="../../library/leaflet/leaflet.js"></script>
+	<script src="../../library/leaflet/leaflet.hotline.js"></script>
+
+	<script src="../../GeoJSON_Files/main.geojson"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+		integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
+	</script>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="scripts/css/nv.d3.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="scripts/css/interlocks.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+	<script src="scripts/js/nv.d3.js"></script>
+	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+
+
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+	<style type="text/css">
+		body {
+			font-family: 'Montserrat', 'serif';
+			font-size: 14px;
+			overflow: auto;
+			color: #555555;
+			letter-spacing: 0.15px;
+			line-height: 1.5;
+		}
+
+		/*#navID{*/
+		/*background: #FFFFFF;*/
+		/*color: #0000FF;*/
+		/*}*/
+
+		#navID ul li ul {
+			max-height: 300px;
+			font-family: 'Montserrat', 'serif';
+			font-size: 14px;
+			z-index: 10000;
+			/* you can change as you need it */
+			/* to get scroll */
+			/*background: blue;*/
+			color: #05386b !important;
+			background: #b8ffcb;
+			text-align: center;
+
+		}
+
+		#navID ul li ul li a:hover {
+			z-index: 10000;
+			/* you can change as you need it */
+			/* to get scroll */
+			/*background: blue;*/
+			font-family: 'Montserrat', 'serif';
+			font-size: 14px;
+			background: #5cdb95;
+
+			color: #05386b !important;
+			text-align: center;
+			letter-spacing: 0.5px;
+
+		}
+
+		#navID ul li a {
+
+			font-family: 'Montserrat', 'serif';
+			font-size: 14px;
+			/* you can change as you need it */
+			/* to get scroll */
+			/*background: blue;*/
+			color: #05386b !important;
+		}
+
+
+		.info {
+			padding: 6px 8px;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255, 255, 255, 0.8);
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+		}
+
+		.info h4 {
+			margin: 0 0 5px;
+			color: #777;
+		}
+
+		.info h6 {
+			margin: 0 0 2px;
+			color: #777;
+		}
+
+		.faqHeader {
+			font-size: 27px;
+			margin: 20px;
+		}
+
+		h1 {
+			margin: auto;
+			text-align: center;
+		}
+
+		.one {
+			width: 100%;
+			height: 180px;
+			color: #05386b !important;
+			background: #4FA543 !important;
+		}
+
+		.two {
+			background: #4FA543 !important;
+			width: 100%;
+			height: 70px;
+			color: #05386b !important;
+		}
+	</style>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+	<script>
+		$(function () {
+			$("#header").load("header.html");
+			$("#footer").load("footer.html");
+		});
+	</script>
+</head>
+
+<body>
+	<div id="header"></div>
+	<section class="w3-container w3-center" style="max-width:2000px">
+	</section>
+
+	<!--<nav class="navbar navbar-inverse header" id="navID">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Hypothesis 1<span
+							class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="hypo-1-bf.html">BF</a></li>
+						<li><a href="hypo-1-fc.html">FC</a></li>
+						<li><a href="hypo-1-chh.html">CHH</a></li>
+						<li><a href="hypo-1-msl.html">MSL</a></li>
+						<li><a href="hypo-1-msw.html">MSW</a></li>
+						<li><a href="hypo-1-asset.html">ASSET</a></li>
+					</ul>
+				</li>
+				<li><a href="hypo-2.html">Hypothesis 2</a></li>
+				<li><a href="hypo-3.html">Hypothesis 3</a></li>
+				<li><a href="hypo-4.html">Hypothesis 4</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Hypothesis 5<span
+							class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="hypo-5-bf.html">BF</a></li>
+						<li><a href="hypo-5-fc.html">FC</a></li>
+						<li><a href="hypo-5-chh.html">CHH</a></li>
+						<li><a href="hypo-5-msl.html">MSL</a></li>
+						<li><a href="hypo-5-msw.html">MSW</a></li>
+						<li><a href="hypo-5-asset.html">ASSET</a></li>
+					</ul>
+				</li>
+				<li><a href="hypo-6.html">Hypothesis 6</a></li>
+				<li><a href="list-of-districts.php">List of Districts</a></li>
+				</li>
+			</ul>
+		</div>
+	</nav>-->
+<nav class="navbar navbar-inverse header" id="navID">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Hypothesis 1<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="hypo-1-bf.html">Bathroom facilities</a></li>
+					<li><a href="hypo-1-fc.html">Fuel for cooking
+</a></li>
+					<li><a href="hypo-1-chh.html">Condition of household</a></li>
+					<li><a href="hypo-1-msl.html">Main source of lighting</a></li>
+					<li><a href="hypo-1-msw.html">Main source of water</a></li>
+					<li><a href="hypo-1-asset.html">Asset ownership</a></li>
+				</ul>
+			</li>
+			<li><a href="hypo-2.html">Hypothesis 2</a></li>
+			<li><a href="hypo-3.html">Hypothesis 3</a></li>
+			<li><a href="hypo-4.html">Hypothesis 4</a></li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Hypothesis 5<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="hypo-5-bf.html">Bathroom facilities</a></li>
+					<li><a href="hypo-5-fc.html">Fuel for cooking
+</a></li>
+					<li><a href="hypo-5-chh.html">Condition of household</a></li>
+					<li><a href="hypo-5-msl.html">Main source of lighting</a></li>
+					<li><a href="hypo-5-msw.html">Main source of water</a></li>
+					<li><a href="hypo-5-asset.html">Asset ownership</a></li>
+				</ul>
+			</li>
+			<li><a href="hypo-6.html">Hypothesis 6</a></li>
+			<li><a href="list-of-districts.php">List of Districts</a></li>
+			</li>
+		</ul>
+	</div>
+</nav> 
+
+	<h1 style="text-align: center;color: #05386b !important;">Hypothesis 4</h1>
+
+	<i>
+		<h4 style="text-align: center;color: #555555 !important;">Discretionary spending by households is closely
+			related to literacy <br>and formal employment and does not seem to be affected by social infrastructure<br>
+			provisioning by the government.</h4>
+	</i>
+	<br>
+	<p
+		style="text-align: left; width: 80%; margin-inline-end: 10%;margin-inline-start: 10%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+		In this hypothesis we check what factors may affect the discretionary spending by households, or rather, we
+		check which factors may be stronger predictors of discretionary spending. We check for four factors: literacy,
+		formal employment, current status, and government support for social infrastructure. Since our variables are
+		discretized into multiple ordinal levels, we choose to examine the mutual information between the pairs to form
+		an assessment of the strength of relationship between them. The same method is used to calculate mutual
+		information between each of the four factors of interest in this hypothesis (literacy, formal employment,
+		current status, and govern-ment support for social infrastructure), and change in each of the four discretionary
+		variables (asset ownership, bath-room facility, fuel for cooking, and condition of household). The figure to the
+		right shows the mutual information calculated on these tables. We can see that literacy, formal employment, and
+		the current status are all more predictive of change in discretionary variables as compared to government
+		support on the main source of lighting and main source of water.
+		<br><br>
+		This is not altogether surprising because literacy and formal employment go hand in hand with each other, and
+		the wages in formal employment are substantially higher than wages in the unorganized sector, which puts more
+		disposable income in the hands of people that can be used for discretionary expenditure. The 2018 India Wage
+		report by ILO reveals that the average daily wages of workers in formal employment (organized sector) are ₹ 513,
+		while wages in the unorganized sector are ₹ 166. Similarly, wages for men with the highest level of education as
+		graduates are ₹ 735, while for casual urban workers with the same level of education the wages are ₹ 219.
+	</p>
+	<br>
+	<hr>
+	<div class="container-fluid">
+		<div class="row">
+				<h4 style="text-align: center;color: #05386b !important;">Mutual Information</h4>
+				<br>
+			<div class="col-sm-12 text-left">
+				<div id="chart" style=" height: 480px;width: 80%; margin-inline-start: 10%;margin-inline-end: 10%;"></div>
+				<script>
+					// Themes begin
+					am4core.useTheme(am4themes_animated);
+
+					//am4core.useTheme(am4themes_material);
+					// Themes end
+
+					var chart = am4core.create("chart", am4charts.XYChart);
+
+					// Set up data source
+					chart.dataSource.url = "hypothesis4.csv";
+					chart.dataSource.parser = new am4core.CSVParser();
+					chart.dataSource.parser.options.useColumnNames = true;
+
+					// Create axes
+					var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+					categoryAxis.dataFields.category = "tag";
+					categoryAxis.renderer.labels.template.rotation = -90;
+					var label = categoryAxis.renderer.labels.template;
+					label.truncate = true;
+					label.maxWidth = 100;
+					categoryAxis.renderer.minGridDistance = 0.1;
+					// label.maxheight = 50;
+					label.tooltipText = "{category}";
+
+					// Create value axis
+					var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+
+					// Create series
+					var series1 = chart.series.push(new am4charts.LineSeries());
+					series1.dataFields.valueY = "Literacy";
+					series1.dataFields.categoryX = "tag";
+					series1.name = "Literacy";
+					series1.strokeWidth = 2;
+
+					series1.tooltipText = "{valueY}";
+					//series1.tensionX = 0.7;
+					series1.bullets.push(new am4charts.CircleBullet());
+
+					var series2 = chart.series.push(new am4charts.LineSeries());
+					series2.dataFields.valueY = "FormalEmp";
+					series2.dataFields.categoryX = "tag";
+					series2.name = "Formal Employment";
+					series2.strokeWidth = 2;
+
+					series2.tooltipText = "{valueY}";
+					//series1.tensionX = 0.7;
+					series2.bullets.push(new am4charts.CircleBullet());
+
+					var series3 = chart.series.push(new am4charts.LineSeries());
+					series3.dataFields.valueY = "Currentstatus";
+					series3.dataFields.categoryX = "tag";
+					series3.name = "Current Status";
+					series3.strokeWidth = 2;
+
+					series3.tooltipText = "{valueY}";
+					//series1.tensionX = 0.7;
+					series3.bullets.push(new am4charts.CircleBullet());
+
+					var series4 = chart.series.push(new am4charts.LineSeries());
+					series4.dataFields.valueY = "MSLinvestment";
+					series4.dataFields.categoryX = "tag";
+					series4.name = "MSL Investment";
+					series4.strokeWidth = 2;
+
+					series4.tooltipText = "{valueY}";
+					//series1.tensionX = 0.7;
+					series4.bullets.push(new am4charts.CircleBullet());
+
+					var series5 = chart.series.push(new am4charts.LineSeries());
+					series5.dataFields.valueY = "MSWinvestment";
+					series5.dataFields.categoryX = "tag";
+					series5.name = "MSW Investment";
+					series5.strokeWidth = 2;
+
+					series5.tooltipText = "{valueY}";
+					//series1.tensionX = 0.7;
+					series5.bullets.push(new am4charts.CircleBullet());
+
+					chart.cursor = new am4charts.XYCursor();
+					chart.cursor.xAxis = categoryAxis;
+					//chart.cursor.snapToSeries = series1;
+
+					// chart.scrollbarX = new am4core.Scrollbar();
+					//	chart.scrollbarY = new am4core.Scrollbar();
+
+
+					// Add legend
+					chart.legend = new am4charts.Legend();
+				</script>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="footer"></div>
+</body>
+
+</html>

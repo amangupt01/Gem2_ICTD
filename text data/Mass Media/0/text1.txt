@@ -1,0 +1,28 @@
+Aspects are subtopics of discussion within a given policy. Some aspects of Aadhaar
+are<i> [Requirement of Aadhaar for passport & other services,
+Fake ration cards and its linkage with Aadhaar,
+Installation of e-pos systems for Aadhaar enabled PDS.]</i>
+We calculate aspect coverage as the relative number of words written about an aspect by a newspaper (in other words, it measures the space provided to an aspect by a newspaper). Aspect coverage for social media is similarly the relative number of tweets
+provided to an aspect by the followers of a newspaper (in other words, it measures the attention given to an aspect by the readers of the newspaper). The graph on the left shows the aspect coverage distribution for the newspaper, and the graph on the right shows the aspect coverage distribution for social media. Please click on the bars showing aspect coverage, to get an example of an article belonging to that aspect.
+ <br><br>
+
+
+<b>Aspect Coverage of Aadhaar in Mass Media by news sources</b><br>
+
+The highest covered aspect in Aadhaar is <i>[court cases
+related to Aadhaar]</i> that primarily talks about data security, right to privacy, and linking of Aadhaar to welfare schemes. This aspect discusses about the court cases
+on whether the right to privacy is a fundamental right, and the issues on leakage of citizens’ data due to lack of planning and professionalism of the agencies appointed by the government to collect this data. The articles in this aspect directly mention the middle-class citizens being one of the most affected constituencies. The number of articles related to the court cases on linkage of Aadhaar to different welfare schemes
+were much lesser compared to the cases on privacy issues.<br>
+
+Thus, we see that in mass media, the focus in Aadhaar is thus more on informing the
+middle-class citizens about the facilities for connecting them to the policy,
+the operations around policy implementation, and loopholes related to privacy of data.
+There is a conspicuous lack of attention to the issues impacting the poor directly.
+ <br><br>
+
+
+<b>Aspect Coverage of Aadhaar in Social Media by news sources</b><br>
+
+We find that the social media community of followers of these news-sources
+echo the same trend. The top five aspects covered by the social media follower community are mostly the same as the top five aspects covered by the news-sources that they follow.
+

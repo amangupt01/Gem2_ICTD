@@ -1,0 +1,2 @@
+To analyse media bias, we study the coverage and sentiment with which mass media houses cover different aspects (or topics of discussion) around GST. We also see how much does social media (Twitter) follower community of these mass media houses conform with the content presented by them. We analyse this conformance w.r.t. the coverage provided to different aspects, and the sentiment with which these aspects are covered.
+

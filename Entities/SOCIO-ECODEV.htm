@@ -1,0 +1,954 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Socio-Economic Development</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../library/leaflet/leaflet.css">
+	<script type="text/javascript" src="../library/leaflet/leaflet.js"></script>
+	<script src="../library/leaflet/leaflet.hotline.js"></script>
+
+	<script src="../GeoJSON_Files/main1.geojson"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+		integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
+	</script>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="scripts/css/nv.d3.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="scripts/css/interlocks.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+	<script src="scripts/js/nv.d3.js"></script>
+	<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+
+
+	<style>
+		body {
+			font-family: 'Open Sans', 'serif';
+			font-size: 14px;
+			/*overflow: auto;*/
+		}
+
+		.loader {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url('../Images/page-loader.gif') 50% 50% no-repeat rgb(249, 249, 249);
+		}
+
+		#map {
+			height: 500px;
+			width: 500px;
+			margin: 10px;
+			float: center;
+		}
+
+		#map1 {
+			height: 500px;
+			width: 500px;
+			margin: 10px;
+			float: left;
+		}
+
+		#map2 {
+			height: 300px;
+			width: 300px;
+			margin: 10px;
+			float: right;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script>
+		$(function () {
+			$("#header").load("header.html");
+			$("#footer").load("footer.html");
+		});
+	</script>
+</head>
+
+<body>
+	<div class="loader"></div>
+	<script type="text/javascript">
+		$(window).load(function () {
+			$(".loader").fadeOut("slow");
+		})
+	</script>
+	<div id="header"></div>
+
+	<!-- <div style="text-align: center; width: 70%">
+	 -->
+	<!-- <div id="map2">
+				<script type="text/javascript">
+					function style(feature) {
+				        return {
+					        weight: 0.5,
+					        opacity: 1,
+					        color: 'white',
+					        dashArray: '3',
+					        fillOpacity: 0.7
+					    };
+					}
+
+					function onClick(e) {
+						var layer2 = e.target;
+						window.location.href = 'socio-econ-hypo/main-district-page.php?censuscode='+layer2.feature.properties.censuscode;
+					}
+
+					function highlightFeature(e) {
+					    var layer2 = e.target;
+
+					    layer2.setStyle({
+					        weight: 5,
+					        color: '#666',
+					        dashArray: '',
+					        fillOpacity: 0.7
+					    });
+
+					    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+					        layer2.bringToFront();
+					    }
+					    info2.update(layer2.feature.properties);
+					}
+
+					function resetHighlight(e) {
+					    districts_layer2.resetStyle(e.target);
+					    info2.update();
+					}
+
+					function onEachFeature(feature, layer2) {
+					  	layer2.on({
+					        mouseover: highlightFeature,
+					        mouseout: resetHighlight,
+					        click: onClick
+					    });
+					}
+
+					function toInt(n){ return Math.round(Number(n)); };
+
+					var map_var = L.map('map2', {
+					    center: L.latLng(22.69, 80.97),
+					    zoom: 4
+					});
+					var info2 = L.control();
+					info2.onAdd = function (map) {
+					    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+					    this.update();
+					    return this._div;
+					};
+
+					// method that we will use to update the control based on feature properties passed
+					info2.update = function (props) {
+						this._div.innerHTML = (props ?
+							'<b>' + props.DISTRICT + ", " + props.ST_NM + '</b><br />' : 'Hover over a district');
+					};
+
+					var districts_layer2 = L.geoJson(india_districts, {
+						style: style,
+						onEachFeature: onEachFeature
+					}).addTo(map_var);
+
+					info2.addTo(map_var);
+				</script>
+			</div> -->
+	<h1 style="text-align: center;color: #05386b !important;">Socio-Economic Development</h1>
+	<div style="margin: 2% 15% 5% 15%; width: 70%;">
+		<div id="map2">
+			<!-- <h6 style="text-align: center;color: #05386b !important;">Click on a District</h6> -->
+			<script type="text/javascript">
+				function style(feature) {
+					return {
+						weight: 0.5,
+						opacity: 1,
+						color: 'white',
+						dashArray: '3',
+						fillOpacity: 0.7
+					};
+				}
+
+				function onClick(e) {
+					var layer2 = e.target;
+					window.location.href = 'socio-econ-hypo/main-district-page.php?censuscode=' + layer2.feature.properties
+						.censuscode;
+				}
+
+				function highlightFeature(e) {
+					var layer2 = e.target;
+
+					layer2.setStyle({
+						weight: 5,
+						color: '#666',
+						dashArray: '',
+						fillOpacity: 0.7
+					});
+
+					if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+						layer2.bringToFront();
+					}
+					info2.update(layer2.feature.properties);
+				}
+
+				function resetHighlight(e) {
+					districts_layer2.resetStyle(e.target);
+					info2.update();
+				}
+
+				function onEachFeature(feature, layer2) {
+					layer2.on({
+						mouseover: highlightFeature,
+						mouseout: resetHighlight,
+						click: onClick
+					});
+				}
+			
+				var map_var = L.map('map2', {
+					center: L.latLng(22.69, 80.97),
+					zoom: 4
+				});
+				var info2 = L.control();
+				info2.onAdd = function (map) {
+					this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+					this.update();
+					return this._div;
+				};
+
+				// method that we will use to update the control based on feature properties passed
+				info2.update = function (props) {
+					this._div.innerHTML = (props ?
+						'<b>' + props.DISTRICT + ", " + props.ST_NM + '</b><br />' :
+						'Hover over a district (click <br> on it to know more)');
+				};
+
+				var districts_layer2 = L.geoJson(india_districts, {
+					style: style,
+					onEachFeature: onEachFeature
+				}).addTo(map_var);
+
+				info2.addTo(map_var);
+			</script>
+		</div>
+		<p
+			style="margin-inline-end: 1%;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+			Models for socio-economic development are useful for planners to build appropriate policies. Such models are
+			ideally constructed based on empirical data, and we take up the problem of working towards a district
+			development model for India by using two waves of census data. India has almost six hundred districts,
+			diversely spread apart in terms of both social and economic development, and hence presents a unique natural
+			experiment to understand how social and economic factors interplay with one another. We present some
+			interesting observations we are able to make from longitudinal analysis of census data from the years 2001
+			and 2011.
+		</p>
+		<p
+			style="margin-inline-end: 1%;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+			Census variables have multiple parameters which report the number of households in a district for each
+			parameter. We group these mutually exclusive parameters into three broad parameter types of rudimentary,
+			intermediate, and advanced. As an example, firewood is considered as a rudimentary type of fuel for cooking,
+			kerosene and cow dung are grouped together as an intermediate type, and PNG, LPG and biogas are grouped
+			together as advanced types of fuel for cooking. We then do a k-means clustering on the districts based on
+			the percentage of households in each district that use different types of fuel: rudimentary, intermediate,
+			and advanced. This allows us to label each district as a level-1/2/3 district: Level-1 districts
+			predominantly use rudimentary types of fuel for cooking, level-2 districts primarily use intermediate types
+			of fuel, and level-3 districts predominantly use advanced types of fuel for cooking. We follow the same
+			method for all indicators viz. Main Source of Light, Main Source of Water, Asset Ownership, Fuel for
+			Cooking, Bathroom Facility and Condition of Household.
+		</p>
+		<br>
+		<p
+			style="margin-inline-end: 1%;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+			Assigning levels to districts based on socio-economic parameters makes it easy to interpret and further
+			helps to easily compare districts with one another using simple probabilistic analysis to determine broad
+			patterns which we divide into 6 hypotheses. They not only highlight the key trends in socio-economic
+			development across the past few years, but also illustrate a good method for simplifying complex
+			multi-dimensional data into simple units for making comparison.
+		</p>
+		<p
+					style="margin-inline-end: 1%;text-align: left;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+					You can refer our research paper here :
+					<br><br>
+					<a href="http://www.cse.iitd.ernet.in/~aseth/district-development-model.pdf" style="text-decoration: none;">Towards Building a District Development Model for India Using Census Data</a>
+					- <br> <i>D. Goswami, S.B. Tripathi, S. Jain, S. Pathak, and A. Seth.
+							
+					</i><br>
+					ICTD 2019. <a href="http://www.cse.iitd.ernet.in/~aseth/census_supplementary_compass2019.pdf" style="text-decoration: none;"> Supplementary material</a>.
+					
+				</p>
+	</div>
+	
+	<!-- </div> -->
+	<hr>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B1" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white"
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 1
+						</span>
+					</li>
+					<li class="list-group-item lis ">
+						<div class="Des1">
+							<a href="socio-econ-hypo/hypo-1-bf.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Non-agricultural districts see the greatest improvement in all indicators.</p>
+
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B2" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 2
+						</span>
+					</li>
+					<li class="list-group-item lis ">
+						<div class="Des2">
+							<a href="socio-econ-hypo/hypo-2.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Households prefer to invest in assets first, followed by investment in other
+									indicators which they can influence through their own choices. </p>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B3" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white; "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 3
+						</span>
+					</li>
+					<li class="list-group-item lis">
+						<div class="Des3">
+							<a href="socio-econ-hypo/hypo-3.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Government has prioritized electrification and lighting over other indicators that
+									depend upon government support.</p>
+
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 text">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B4" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 4
+						</span>
+					</li>
+					<li class="list-group-item lis">
+						<div class="Des4">
+							<a href="socio-econ-hypo/hypo-4.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Discretionary spending by households is closely related to literacy and formal
+									employment and does not seem to be affected by social infrastructure provisioning by
+									the government. </p>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B3" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white; "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 5
+						</span>
+					</li>
+					<li class="list-group-item lis">
+						<div class="Des3">
+							<a href="socio-econ-hypo/hypo-5-bf.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Districts with more manufacturing and services industries end up developing faster.
+									However, the presence of these industries has not spread geographically and has
+									remained spatially concentrated in the same regions over the years. </p>
+
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 text">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B4" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 6
+						</span>
+					</li>
+					<li class="list-group-item lis">
+						<div class="Des4">
+							<a href="socio-econ-hypo/hypo-6.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Female participation in the workforce has decreased, primarily with a reduction in
+									marginal employment that has not been compensated with an equivalent increase in
+									female main employment. </p>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div style="margin: 2% 15% 5% 15%; width: 70%;">
+		<h1 style="text-align: center;color: #05386b !important;">Satellite Based Prediction</h1>
+		<p
+			style="margin-inline-end: 1%;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+			We also use images from Landsat 7 satellite to train a district-level machine learning model to predict the
+			level of development. Once trained, this model was used to predict development labels for year the 2019. 
+			A neural network-based change classifier was made, which would take labels of years 2001
+			and 2011 as training data. Post this, for each district, we
+			define a metric named <strong>Aggregate Development Index</strong> which is the sum of predicted labels of all six district 
+			indicators. This Index was used as an effective indicator of relative development in districts.
+		</p>
+		<p
+			style="margin-inline-end: 1%;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+			The three maps below depict the ADI of districts for the years 2001, 2011 and 2019. The graphs are color-coded 
+			to show the relative magnitude of ADI. Green indicating a very progressive district, and Red indicates a less developed district.
+			From 2001 to 2011, we can
+			see that states from the eastern part of India (such as Orissa, Bihar, Jharkhand, and West Bengal), large
+			parts in central India (Uttar Pradesh and Madhya Pradesh), and the Northeast districts, showed very little
+			change. These indeed have been the poorest states of the country. In contrast, states such as Gujarat,
+			Maharashtra, and Rajasthan saw many districts as having improved substantially. We are currently correlating
+			these observations with potential explanatory factors such as the degree of industrialization in these
+			districts which could have led to more rapid growth as compared to other non-industrialized and
+			predominantly agricultural districts.During 2011-2019, there has been more widespread growth in the poorest
+			states, especially in West Bengal, Orissa, Uttar Pradesh, and Madhya Pradesh. States like Jharkhand and
+			Bihar have however not progressed substantially. This seems to tally with our general observations of more
+			development attention having been paid to some of the parts which have developed during this time.
+		</p>
+	</div>
+
+
+	<center>
+		<table>
+			<tr>
+				<td>
+					<center>
+						<h5>2001</h5>
+					</center>
+				</td>
+				<td>
+					<center>
+						<h5>2011</h5>
+					</center>
+				</td>
+				<td>
+					<center>
+						<h5>2019</h5>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="map"style="width: 400px; height: 400px;">
+						<script type="text/javascript">
+							function getColor_(attr) {
+								attr = parseInt(attr);
+								if (attr>=6 && attr <= 10) {
+									return 'rgb(' + [0xff, 0x0, 0x0].join(',') + ')';
+								}
+								if (attr>=11 && attr <= 14) {
+									return 'rgb(' + [0xff, 0xdf, 0x0].join(',') + ')';
+								}
+								if (attr>=15 &&attr <= 18) {
+									return 'rgb(' + [0x0, 0xff, 0x0].join(',') + ')';
+								}
+								return 'rgb(' + [0xff, 0xff, 0xff].join(',') + ')';
+								// if (attr ==0) {
+								// 	return 'rgb(' + [0xff, 0xff, 0xff].join(',') + ')';
+								// }
+								// if (attr == 1) {
+								// 	return 'rgb(' + [0xc1, 0xca, 0xf3].join(',') + ')';
+								// }
+								// if (attr == 2) {
+								// 	return 'rgb(' + [0xd0, 0x7e, 0x93].join(',') + ')';
+								// }
+								// if (attr == 3) {
+								// 	return 'rgb(' + [0x54, 0x79, 0x2f].join(',') + ')';
+								// }
+								// if (attr >= 4) {
+								// 	return 'rgb(' + [0x16, 0x3d, 0x4e].join(',') + ')';
+								// }
+							}
+
+							function style(feature) {
+								return {
+									fillColor: getColor_(parseInt(feature.properties.adi_2001)),
+									weight: 0.5,
+									opacity: 1,
+									color: 'white',
+									dashArray: '3',
+									fillOpacity: 0.7
+								};
+							}
+
+							function onClick(e) {
+								var layer = e.target;
+								if (layer.feature.properties.Available == "1"){
+									window.location.href = 'socio-econ-hypo/main-district-page.php?censuscode=' + layer.feature.properties.censuscode;
+								}
+							}
+							function highlightFeature(e) {
+								var layer = e.target;
+								
+								layer.setStyle({
+									weight: 5,
+									color: '#666',
+									dashArray: '',
+									fillOpacity: 0.7
+								});
+								//console.log((layer.feature.properties.adi_2001));
+								//console.log(getColor_(layer.feature.properties.adi_2001));
+								if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+									layer.bringToFront();
+								}
+								info.update(layer.feature.properties);
+								//console.log(layer.feature.properties);
+							}
+							function resetHighlight(e) {
+								var layer_ = e.target;
+								layer_.setStyle({
+									fillColor: getColor_(parseInt(layer_.feature.properties.adi_2001)),
+									weight: 0.5,
+									opacity: 1,
+									color: 'white',
+									dashArray: '3',
+									fillOpacity: 0.7
+								});
+								//districts_layer.resetStyle(e.target);
+								info.update();
+								//console.log((layer_.feature.properties.adi_2001));
+								//console.log(getColor_(layer_.feature.properties.adi_2001));
+							}
+
+							function onEachFeature(feature, layer) {
+								layer.on({
+									mouseover: highlightFeature,
+									mouseout: resetHighlight,
+									click: onClick
+								});
+							}
+
+							function describe(attr) {
+								if (attr.Available =="0"){return 'Data Not Available';}
+								return "ADI = " + attr.adi_2001 + "</br>" + "<ul> <li>ASSETS = "+attr.asset_2001+"</li>"+"<li>CHH = "+attr.chh_2001+"</li>"+
+										"<li>MSW = "+attr.msw_2001+"</li>"+"<li>MSL = "+attr.msl_2001+"</li>"+
+										"<li>BF = "+attr.bf_2001+"</li>"+"<li>FC = "+attr.fc_2001+"</li></ul>"
+							}
+
+							function toInt(n) {
+								return Math.round(Number(n));
+							};
+
+							var map_var = L.map('map', {
+								center: L.latLng(22.69, 80.97),
+								zoom: 4
+							});
+							var info = L.control();
+							info.onAdd = function (map) {
+								this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+								this.update();
+								return this._div;
+							};
+							// method that we will use to update the control based on feature properties passed
+							info.update = function (props) {
+								this._div.innerHTML = (props ?
+									'<b>' + props.DISTRICT + ", " + props.ST_NM + '</b><br />' + describe(props):
+									'Hover over a district');
+							};
+
+							
+							var districts_layer = new L.geoJson(india_districts, {
+								style: style,
+								onEachFeature: onEachFeature
+							}).addTo(map_var);
+
+							info.addTo(map_var);
+
+							var legend = L.control({
+								position: 'bottomright'
+							});
+
+							legend.onAdd = function (map) {
+
+								var div = L.DomUtil.create('div', 'info legend'),
+									colors = ['FFFFFF', 'FF0000', 'FFDF00', '00FF00'];
+
+								for (var i = 0; i < colors.length; i++) {
+									if (i == 0) {
+										div.innerHTML +=
+											'<i style="background:#' + colors[i] + '"> Data Not Available </i> <br> ';
+									} else if (i == 1) {
+										div.innerHTML +=
+											'<i style="background:#' + colors[i] + '"> 6-10 </i> <br>';
+									} else if (i == 2) {
+										div.innerHTML +=
+											'<i style="background:#' + colors[i] + '"> 11-14 </i> <br> ';
+									} else{
+										div.innerHTML +=
+											'<i style="background:#' + colors[i] + '"> 15-18 </i> <br> ';
+									}
+								}
+
+								return div;
+							};
+
+
+							legend.addTo(map_var);
+
+							// var snippet = L.control({position: 'bottomleft'});
+
+							// snippet.onAdd = function (map) {
+
+							// 	var div = L.DomUtil.create('div', 'info');
+
+							// 	total = get_salient_info(0) - 1
+							// 	div.innerHTML = '-ve Change - <b>'+ get_salient_info(1) + ' (' + toInt((get_salient_info(1)*100)/total) + '%)</b><br />' + 
+							// 		'No Change - <b>'+ get_salient_info(2) + ' (' + toInt((get_salient_info(2)*100)/total) + '%)</b><br />' + 
+							// 		'+ve Change - <b>'+ get_salient_info(3) + ' (' + toInt((get_salient_info(3)*100)/total) + '%)</b><br />' + 
+							// 		'Total - <b>'+ total + '</b><br />';
+							// 	return div;
+							// };
+
+							// snippet.addTo(map_var);
+						</script>
+					</div>
+				</td>
+				<td>
+					<div id="map1" style="width: 400px; height: 400px;">
+						<script type="text/javascript">
+							function getColor_1(attr) {
+
+								attr = parseInt(attr);
+								if (attr>=6 && attr <= 10) {
+									return 'rgb(' + [0xff, 0x0, 0x0].join(',') + ')';
+								}
+								if (attr>=11 && attr <= 14) {
+									return 'rgb(' + [0xff, 0xdf, 0x0].join(',') + ')';
+								}
+								if (attr>=15 &&attr <= 18) {
+									return 'rgb(' + [0x0, 0xff, 0x0].join(',') + ')';
+								}
+								return 'rgb(' + [0xff, 0xff, 0xff].join(',') + ')';
+							}
+
+							function style_1(feature) {
+								return {
+									fillColor: getColor_1(feature.properties.adi_2011),
+									weight: 0.5,
+									opacity: 1,
+									color: 'white',
+									dashArray: '3',
+									fillOpacity: 0.7
+								};
+							}
+
+							function onClick_1(e) {
+								var layer1 = e.target;
+								if (layer1.feature.properties.Available == "1"){
+									window.location.href = 'socio-econ-hypo/main-district-page.php?censuscode=' + layer1.feature.properties.censuscode;
+								}
+							}
+
+							function highlightFeature_1(e) {
+								var layer1 = e.target;
+
+								layer1.setStyle({
+									weight: 5,
+									color: '#666',
+									dashArray: '',
+									fillOpacity: 0.7
+								});
+
+								if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+									layer1.bringToFront();
+								}
+								info1.update(layer1.feature.properties);
+							}
+
+							function resetHighlight_1(e) {
+								var layer_1 = e.target;
+								layer_1.setStyle({
+									fillColor: getColor_1(parseInt(layer_1.feature.properties.adi_2011)),
+									weight: 0.5,
+									opacity: 1,
+									color: 'white',
+									dashArray: '3',
+									fillOpacity: 0.7
+								});
+								info1.update();
+							}
+
+							function onEachFeature_1(feature, layer1) {
+								layer1.on({
+									mouseover: highlightFeature_1,
+									mouseout: resetHighlight_1,
+									click: onClick_1
+								});
+							}
+
+							function describe1(attr) {
+								if (attr.Available =="0"){return 'Data Not Available';}
+								return "ADI = " + attr.adi_2011 + "</br>" + "<ul> <li>ASSETS = "+attr.asset_2011+"</li>"+"<li>CHH = "+attr.chh_2011+"</li>"+
+										"<li>MSW = "+attr.msw_2011+"</li>"+"<li>MSL = "+attr.msl_2011+"</li>"+
+										"<li>BF = "+attr.bf_2011+"</li>"+"<li>FC = "+attr.fc_2011+"</li></ul>"
+							}
+
+							function toInt(n) {
+								return Math.round(Number(n));
+							};
+
+							var map_var1 = L.map('map1', {
+								center: L.latLng(22.69, 80.97),
+								zoom: 4
+							});
+							var info1 = L.control();
+							info1.onAdd = function (map) {
+								this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+								this.update();
+								return this._div;
+							};
+
+							// method that we will use to update the control based on feature properties passed
+							info1.update = function (props) {
+								this._div.innerHTML = (props ?
+									'<b>' + props.DISTRICT + ", " + props.ST_NM + '</b><br />' + describe1(props) +
+									'<br />' :
+									'Hover over a district');
+							};
+
+							var districts_layer1 = L.geoJson(india_districts, {
+								style: style_1,
+								onEachFeature: onEachFeature_1
+							}).addTo(map_var1);
+
+							info1.addTo(map_var1);
+
+							var legend = L.control({
+								position: 'bottomright'
+							});
+
+							legend.onAdd = function (map) {
+
+								var div = L.DomUtil.create('div', 'info legend'),
+								colors = ['FFFFFF', 'FF0000', 'FFDF00', '00FF00'];
+									for (var i = 0; i < colors.length; i++) {
+										if (i == 0) {
+											div.innerHTML +=
+												'<i style="background:#' + colors[i] + '"> Data Not Available </i> <br> ';
+										} else if (i == 1) {
+											div.innerHTML +=
+												'<i style="background:#' + colors[i] + '"> 6-10 </i> <br>';
+										} else if (i == 2) {
+											div.innerHTML +=
+												'<i style="background:#' + colors[i] + '"> 11-14 </i> <br> ';
+										} else{
+											div.innerHTML +=
+												'<i style="background:#' + colors[i] + '"> 15-18 </i> <br> ';
+										}
+									}
+								return div;
+							};
+
+
+							legend.addTo(map_var1);
+
+							// var snippet = L.control({position: 'bottomleft'});
+
+							// snippet.onAdd = function (map) {
+
+							// 	var div = L.DomUtil.create('div', 'info');
+
+							// 	total = get_salient_info(0) - 1
+							// 	div.innerHTML = '-ve Change - <b>'+ get_salient_info(1) + ' (' + toInt((get_salient_info(1)*100)/total) + '%)</b><br />' + 
+							// 		'No Change - <b>'+ get_salient_info(2) + ' (' + toInt((get_salient_info(2)*100)/total) + '%)</b><br />' + 
+							// 		'+ve Change - <b>'+ get_salient_info(3) + ' (' + toInt((get_salient_info(3)*100)/total) + '%)</b><br />' + 
+							// 		'Total - <b>'+ total + '</b><br />';
+							// 	return div;
+							// };
+
+							// snippet.addTo(map_var);
+						</script>
+					</div>
+				</td>
+				<td>
+					<div id="map3" style="width: 400px; height: 400px;">
+						<script type="text/javascript">
+							function getColor_2(attr) {
+								attr = parseInt(attr);
+								if (attr>=6 && attr <= 10) {
+									return 'rgb(' + [0xff, 0x0, 0x0].join(',') + ')';
+								}
+								if (attr>=11 && attr <= 14) {
+									return 'rgb(' + [0xff, 0xdf, 0x0].join(',') + ')';
+								}
+								if (attr>=15 &&attr <= 18) {
+									return 'rgb(' + [0x0, 0xff, 0x0].join(',') + ')';
+								}
+								return 'rgb(' + [0xff, 0xff, 0xff].join(',') + ')';
+								}
+
+								function style_2(feature) {
+								return {
+									fillColor: getColor_2(feature.properties.adi_2019),
+									weight: 0.5,
+									opacity: 1,
+									color: 'white',
+									dashArray: '3',
+									fillOpacity: 0.7
+								};
+								}
+
+								function onClick_2(e) {
+								var layer2 = e.target;
+								if (layer2.feature.properties.Available == "1"){
+									window.location.href = 'socio-econ-hypo/main-district-page.php?censuscode=' + layer2.feature.properties.censuscode;
+								}
+								}
+
+								function highlightFeature_2(e) {
+								var layer2 = e.target;
+
+								layer2.setStyle({
+									weight: 5,
+									color: '#666',
+									dashArray: '',
+									fillOpacity: 0.7
+								});
+
+								if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+									layer2.bringToFront();
+								}
+								info2.update(layer2.feature.properties);
+								}
+
+								function resetHighlight_2(e) {
+								districts_layer2.resetStyle(e.target);
+								info2.update();
+								}
+
+								function onEachFeature_2(feature, layer2) {
+								layer2.on({
+									mouseover: highlightFeature_2,
+									mouseout: resetHighlight_2,
+									click: onClick_2
+								});
+								}
+
+								function describe2(attr) {
+									if (attr.Available =="0"){return 'Data Not Available';}
+									return "ADI = " + attr.adi_2019 + "</br>" + "<ul> <li>ASSETS = "+attr.asset_2019+"</li>"+"<li>CHH = "+attr.chh_2019+"</li>"+
+										"<li>MSW = "+attr.msw_2019+"</li>"+"<li>MSL = "+attr.msl_2019+"</li>"+
+										"<li>BF = "+attr.bf_2019+"</li>"+"<li>FC = "+attr.fc_2019+"</li></ul>"
+								}
+
+								var map_var = L.map('map3', {
+									center: L.latLng(22.69, 80.97),
+									zoom: 4
+								});
+								var info2 = L.control();
+								info2.onAdd = function (map) {
+								this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+								this.update();
+								return this._div;
+								};
+
+								// method that we will use to update the control based on feature properties passed
+								info2.update = function (props) {
+								this._div.innerHTML = (props ?
+									'<b>' + props.DISTRICT + ", " + props.ST_NM + '</b><br />' + describe2(props) +
+									'<br />' :
+									'Hover over a district');
+								};
+
+								var districts_layer2 = L.geoJson(india_districts, {
+								style: style_2,
+								onEachFeature: onEachFeature_2
+								}).addTo(map_var);
+
+								info2.addTo(map_var);
+
+								var legend = L.control({
+								position: 'bottomright'
+								});
+
+
+								legend.onAdd = function (map) {
+									var div = L.DomUtil.create('div', 'info legend'),
+									colors = ['FFFFFF', 'FF0000', 'FFDF00', '00FF00'];
+										for (var i = 0; i < colors.length; i++) {
+											if (i == 0) {
+												div.innerHTML +=
+													'<i style="background:#' + colors[i] + '"> Data Not Available </i> <br> ';
+											} else if (i == 1) {
+												div.innerHTML +=
+													'<i style="background:#' + colors[i] + '"> 6-10 </i> <br>';
+											} else if (i == 2) {
+												div.innerHTML +=
+													'<i style="background:#' + colors[i] + '"> 11-14 </i> <br> ';
+											} else{
+												div.innerHTML +=
+													'<i style="background:#' + colors[i] + '"> 15-18 </i> <br> ';
+											}
+										}
+									return div;
+									};
+								legend.addTo(map_var);
+						</script>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</center>
+
+
+	<div id="footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+Aspects are subtopics of discussion within a given policy. 
+Some aspects of GST <i>[Training Programmes for Creating GST Awareness, 
+Effect of GST on GDP and Economy, GST Bill Discussion in Parliament.]</i> 
+We calculate aspect coverage as the relative number of words written about an aspect by a newspaper 
+(in other words, it measures the space provided to an aspect by a newspaper). 
+Aspect coverage for social media is similarly the relative number of tweets provided 
+to an aspect by the followers of a newspaper 
+(in other words, it measures the attention given to an aspect by the readers of the newspaper). 
+The graph on the left shows the aspect coverage distribution for the newspaper, 
+and the graph on the right shows the aspect coverage distribution for social media. 
+Please click on the bars showing aspect coverage, to get an example of an article belonging to that aspect.<br><br>
+<b>Aspect Coverage of GST in Mass Media</b><br>
+In GST the top aspect covered in mass media includes discussions on the <i>[troubles faced by small traders to meet the GST registration deadline].</i> 
+This aspect directly relates to the trouble that the small traders and businesses faced across the country, 
+in registering for GST due to impending registration deadlines and faults in the GST registration software, 
+and does not include discussions around the issues of the consumers.<br>
+Examples of issues related to consumers include rise in the price of commodities and 
+services because of more of them coming under the tax umbrella due 
+to a push towards formalization, leading to informal enterprises dying out and making way for formal enterprises.<br>
+The second highest covered aspect in mass media discusses the <i>[implementation of the GST bill in different states]</i>, 
+with a significant amount of discussion revolving around the applicability of GST in Jammu and Kashmir, 
+a state granted special status. 
+This aspect does not relate to the issues of the middle class and the poor directly.
+<br>
+For GST, the primary focus of the media is thus on the troubles faced by traders in registering for GST. The issues relevant to the consumers see a clear deficiency in attention.<br><br>
+
+<b>Aspect Coverage of GST in Social Media by news sources</b>
+<br>
+We find that the social media community of followers of these news-sources echo the same trend. The top five aspects covered by the social media follower community are mostly the same as the top five aspects covered by the news-sources that they follow. It should however be noted that there exists a skew in the aspect coverage in social media in many cases, i.e., not all aspects receive significant attention from social media in all cases.
+ 
+

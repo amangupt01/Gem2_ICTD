@@ -1,0 +1,18 @@
+This graph shows how the aspects are being spoken about in mass media, in terms of the overall aggregate sentiment of all statements made on that aspect. The sentiment slant for any statement can be positive, negative, or neutral. For an aspect, we add up all the sentiment values of the statements belonging to the aspect.<br><br>
+
+An example of a statement with positive sentiment about Demonetisation:<br>
+<b>“When prime minister narendramodi announced that Rs 500 and Rs 1,000 banknotes would cease to be legal tender from november 9, he had stated that the last chance for people hoarding black money to come out clean was over.”</b>
+<br>An example of a statement with negative sentiment about Demonetisation:<br>
+<b>“However, no videshi black money turned up to be whitened, so now the fm has asked desi black money to come up and be made fair and lovely”, as Rahul Gandhi said in parliament.</b><br><br>
+ 
+We can see that the statements describe the main pattern here, that the ruling party politicians speak positively about the policy, and the opposition speaks negatively. It is also evident that these statements are related to the promotion and countering of the government narrative behind Demonetization, which included recovery of black money, and curbing of practices that encouraged stashing of black money. This is also one of the highly covered aspects in Demonetization.<br><br>
+ 
+The graph about social media shows the sentiment expressed in social media tweets.
+Positive tweets include statements like <span style="color:blue;"> <i>‘World Bank CEO lauds demonetisation, says economy will see positive impact and Demonetisation a catalyst for a cashless society’</i></span>
+<br><br>
+Negative tweets include statements like <span style="color:red;"><i> ‘Harsh reminder of what a disaster demonetisation was Lest we forget. #500DaysOfDemoDisaster ‘</i></span>
+<br><br>
+We can see that the tweets describe the main pattern here. The social media community of followers cover some of the highest covered aspects by mass media. While the negative tweets do focus on the inconveniences and loss of lives of the poor, they do so primarily for the purpose of politicizing the issue.
+ 
+ 
+

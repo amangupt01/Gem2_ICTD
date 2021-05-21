@@ -1,0 +1,28 @@
+Aspects are subtopics of discussion within a given policy. 
+Some aspects of farmer’s protest are<i>[ Crimes and Suicide in farmer community, 
+Educational Drives and Social Awareness on Farmer's Distress, 
+Politics in Maharashtra/Punjab over Compensation and Loan waiver for farmers.]</i> 
+We calculate aspect coverage as the relative number of words written about an aspect by a newspaper 
+(in other words, it measures the space provided to an aspect by a newspaper). 
+Aspect coverage for social media is similarly the relative number of tweets 
+provided to an aspect by the followers of a newspaper (in other words, 
+it measures the attention given to an aspect by the readers of the newspaper). 
+The graph on the left shows the aspect coverage distribution for the newspaper, 
+and the graph on the right shows the aspect coverage distribution for social media. 
+Please click on the bars showing aspect coverage, 
+to get an example of an article belonging to that aspect.<br><br>
+<b>Aspect Coverage of Farmers Protest in Mass Media</b><br>
+
+<i>[Disbursement of loans and subsidies to farmers by banks]</i> is the highest covered aspect in mass media for Farmers Protest, 
+and talks about the loans provided to the farmers by banks, under various government schemes.<br>
+In mass media, the second highest covered aspect is<i> [Irrigation concerns and water pollution affecting farming]</i>, 
+which talks about the problems faced by farmers in irrigation, 
+due to water pollution through industrial effluents. 
+Thus, for Farmers’ Protest, the mass media covers the structural issues in agriculture, 
+and also policy issues related to disbursement of loans for poor farmers.<br><br>
+
+<b>Aspect Coverage of Farmers Protest in Social Media by news sources</b>
+<br>
+We find that the social media community of followers of these news-sources echo the same trend. The top five aspects covered by the social media follower community are mostly the same as the top five aspects covered by the news-sources that they follow. It should however be noted that there exists a skew in the aspect coverage in social media in many cases, i.e., not all aspects receive significant attention from social media in all cases.
+ 
+

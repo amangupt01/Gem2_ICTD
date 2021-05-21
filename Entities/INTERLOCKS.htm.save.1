@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Corporate Government Interlocks</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.min.css">
+	<link href="../scripts/css/nv.d3.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/interlocks.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+	<style>
+		body {
+			font-family: 'Montserrat', 'serif';
+			font-size: 14px;
+			overflow: auto;
+			color: #555555;
+			letter-spacing: 0.15px;
+			line-height: 1.5;
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+	<script src="../scripts/js/nv.d3.js"></script>
+
+
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+	<style>
+		.loader {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url('../Images/page-loader.gif') 50% 50% no-repeat rgb(249, 249, 249);
+		}
+
+		#img0ne {
+			background: center / contain no-repeat url('../Images/Interlocks/only_sub_coreness_layout.jpeg');
+			transition: transform .2s ease-in-out;
+		}
+
+		#imgtwo {
+			background: center / contain no-repeat url('../Images/Interlocks/both_layout.jpeg');
+			transition: transform .2s ease-in-out;
+		}
+	</style>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script>
+		$(function () {
+			$("#header").load("header.html");
+			$("#footer").load("footer.html");
+		});
+	</script>
+</head>
+
+<body>
+	<!-- <div class="loader"></div>-->
+	<script type="text/javascript">
+		$(window).load(function () {
+			$(".loader").fadeOut("slow");
+		})
+	</script>
+	<div id="header"></div>
+
+	<br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6 text-left" style="text-align:right;">
+				<h2 class="text-center" style="color: #05386b !important;">Corporate Government Interlocks </h2>
+				<p
+					style="margin-inline-end: 1%;text-align: left;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+					Corporate executives
+					who enter politics or government administration, or family members of public officials with
+					links
+					to corporate organizations, are known to build an interlocking social network that becomes a
+					power structure of
+					highly
+					influential entities. This power structure often leads to a bidirectional flow of favors between
+					the corporations
+					and
+					political entities, and it can influence policy formulation or manifest itself in crony
+					capitalism (or
+					corruption).
+					Such negative manifestations of corporate-government interlocks have been evident in India.
+				</p>
+				<p
+					style="margin-inline-end: 1%;text-align: left;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+					In our study, we find
+					that the extent of corporate-government interlocks has increased over time in India.
+					We report our analysis supporting this statement,
+					and highlight some hotspots where the interlocks are tighter than in other places.
+				</p>
+				<p
+					style="margin-inline-end: 1%;text-align: left;margin-inline-start: 1%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+					You can refer our research paper here :
+					<br>
+					<a href="http://www.cse.iitd.ernet.in/~aseth/compass2018-final22.pdf"
+						style="text-decoration: none;">Leveraging Web Data to Monitor Changes in Corporate-Government
+						Interlocks in India</a>
+					- <br> <i>A. Sen, A.
+						Agarwal, A. Guru, A. Choudhuri, G. Singh, I. Mohammed, J. Goyal, K. Mittal, M. Singh, M. Goel,
+						S.
+						Gupta, S. Pathak, V. Madapur, and A. Seth.
+					</i><br>
+					ACM COMPASS 2018
+				</p>
+                                <p
+                                        style="margin-inline-end: 1%;text-align: left;margin-inline-start: 1%;padding: 2.5px2.5px; font-size: 15px !important;">
+                                        You can refer our research paper here :
+                                        <br>
+                                        <a href="http://act4d.iitd.ac.in/act4dgem/Images/Corporate%20Interlocks/Corporate%20Social%20Responsibility%20Data/CSR_Paper_Longer_Version.pdf"
+                                                style="text-decoration: none;">What Drives Location Preference for Corporate SocialResponsibility (CSR) Investments in India?</a>
+                                        - <br> <i>Varun Pareek, Rohit Sharma, Anirban Sen, Arundeep Gupta, Manikaran Kathuria, Aaditeshwar Seth
+                                        </i><br>
+                                        ACM COMPASS
+                                </p>
+
+			</div>
+
+			<div class="col-sm-3 text-left">
+				<div class="linkDeco">
+
+					<ul class="list-group links-list" style="width:100%;margin-block-start: 10%;">
+						<li class="list-group-item"
+							style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white; "
+							data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Click to know more!">
+							<span style="font-family: 'Open Sans', 'serif';">Top Interlocked Sectors </button>
+							</span>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Manufacturing">Manufacturing</a>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Professional, Scientic and Technical Activities">Professional,
+								Scientic and
+								Technical Activities</a>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Wholesale and Retail Trade">Wholesale and Retail Trade</a>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Financial and Insurance Activities">Financial and Insurance
+								Activities</a>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Agriculture, Forestry and Fishing">Agriculture, Forestry and
+								Fishing</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+
+			<div class="col-sm-3 text-left">
+				<div class="linkDeco">
+					<ul class="list-group links-list" style="width: 100% !important;margin-block-start: 10%;">
+						<li class="list-group-item"
+							style="background:white;color: #05386b !important;font-size: 130%;border: 1px solid white; "
+							data-toggle="modal" data-target="#department" data-toggle="tooltip"
+							title="Click to know more!">
+							<span style="font-family: 'Open Sans', 'serif';font-size: 95%;">Top Interlocked
+								Ministries</button>
+							</span>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Ministry Of Finance">Ministry Of Finance</a>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Ministry Of Commerce and Industry">Ministry Of Commerce
+								and Industry</a>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Ministry Of Textiles">Ministry Of Textiles</a>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Ministry Of Housing and Urban Affairs">Ministry Of
+								Housing and Urban Affairs</a>
+						</li>
+						<li class="list-group-item">
+							<a href="../Pages/info.php?page=Ministry Of Home Affairs">Ministry Of Home Affairs</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-6 text-left" style="text-align:right;">
+				<h3 class="text-center" style="color: #05386b !important;">Importance of 
+				directorial interlocks for connectivity of the corporate network</h3>
+				<div class="row" style="text-align:right;">
+					<div class="col-sm-6 text-left" id="img0ne" style=" height: 425px;"></div>
+					<div class="col-sm-6 text-left" id="imgtwo" style=" height: 425px;"></div>
+				</div>
+				<button id="myBtn" class="btn btn-success myBtn" style="margin-inline-end: 2%;">Read more</button>
+				<div id="myModal" class="modal">
+
+					<!-- Modal content -->
+					<div class="modal-content" style="height: 450px !important; overflow: auto;">
+						<div class="modal-header">
+							<span class="close">&times;</span>
+						</div>
+						<div class="modal-body">
+							<p
+								style="text-align:left ;margin-inline-end: 4%;margin-inline-start: 4%;padding: 2.5px 2.5px 2.5px 2.5px; margin-block-start:2%;">
+
+In this figure, we show the importance and impact of people relations in the corporate network. The figure on the left hand side shows the company-subsidiary network, which only consists of owner companies, and the companies held by them (subsidiaries). An owner and a subsidiary are connected by an edge. The figure on the right hand side shows the same network, but this time with also people connections. In this network, we have connections between owners and subsidiaries as before. But alongside, we also have connections between companies if they share some common board members between them. We call these connections "people connections".
+<br><br>
+We can see here that the company-subsidiary network is very sparse, showing few connections and a low density. But as soon as we add the people connections in this network, it becomes much denser. We have also shown the politically connected companies (in both figures) as the bigger, blue nodes. These findings indicate towards two points: 
+<br><br>
+1. Most of the interlocks between companies occur through people connections, or by way of common board memberships. <br>
+2. Many of the politically connected companies are mostly located towards the dense core of the network, i.e., many of the politically connected companies are also highly connected with other companies and may hold &nbsp; considerable network power. <br><br>
+
+
+							<!--	In this figure, we show the importance and impact of people relations in the corporate
+								network. The figure on the left hand side shows the company-subsidiary network, which
+								only consists of owner companies, and the companies held by them (subsidiaries). An
+								owner and a subsidiary are connected by an edge. The figure on the right hand side shows
+								the same network, but this time with people connections. In this network, we have
+								connections between owners and subsidiaries as before. But alongside, we also have
+								connections formed between companies by way of common board memberships and through
+								Corporate-Social-Responsibility (CSR) donations. We call these connections "people
+								connections". People connections can be of two types: (a)C1---D, where D is a director
+								on board of the company C1, and (b) C1---P, where P is a politician and a minister, in
+								whose constituency the company C1 donated amounts under CSR in the same sector in which
+								the minister is placed (i.e., the sector for CSR donation is included in the ministry
+								controlled by the minister). The relations of the form C1---D---C2 represent common
+								board memberships (i.e., D is a director on board of both of the companies C1 and C2).
+								<br><br>
+								We can see here that the company-subsidiary network is very sparse, showing few
+								connections and a low density. But as soon as we add the people connections in this
+								network, it becomes much denser. We have also shown the politically connected companies
+								(in both figures) as the bigger, blue nodes. These findings indicate towards two trends:
+								<br><br>
+								1. Most of the interlocks between companies occur through people connections, or by way
+								of common board memberships and CSR donations.
+								<br>
+								2. Many of the politically connected companies are mostly located towards the dense core
+								of the network, i.e., many of the politically connected companies are heavily
+								interlocked.
+								<br><br> --></p>
+						</div>
+					</div>
+
+				</div>
+
+				<script>
+					// Get the modal
+					var modal = document.getElementById("myModal");
+
+					// Get the button that opens the modal
+					var btn = document.getElementById("myBtn");
+
+					// Get the <span> element that closes the modal
+					var span = document.getElementsByClassName("close")[0];
+
+					// When the user clicks the button, open the modal 
+					btn.onclick = function () {
+						modal.style.display = "block";
+					}
+
+					// When the user clicks on <span> (x), close the modal
+					span.onclick = function () {
+						modal.style.display = "none";
+					}
+				</script>
+
+			</div>
+			<div class="col-sm-6 text-left" style="text-align:right;">
+				<h3 class="text-center" style="color: #05386b !important;">Index of Corporate-Government Interlocks
+				</h3>
+				<div id="chart1" style="height:480px"></div>
+				<button id="myBtn2" class="btn btn-success myBtn" style="margin-inline-end: 2%;">Read more</button>
+				<div id="myModal2" class="modal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close">&times;</span>
+						</div>
+						<div class="modal-body">
+							<p
+								style="text-align:left ;margin-inline-end: 4%;margin-inline-start: 4%;padding: 2.5px 2.5px 2.5px 2.5px; margin-block-start:2%;">
+								We have created an indicator of corporate government overlap, which reflects how much
+								the corporate and government networks overlap. This indicator empirically measures the
+								number and strength of edges between the two networks and calculates a single score that
+								represents the strength of overlap between them. In the above figure, we plot this score
+								over the period of four Lok Sabha elections.<br><br>
+								We consider companies and their managers to be the part of the corporate network, and
+								the politicians and bureaucrats (IAS officers) to be a part of the government network.
+								An overlap between these two networks occurs in the form of bridge edges, i.e., edges
+								that connect the two networks. Some examples of bridge edges include: a politician who
+								is connected to a company as a manager, a politician whose relative is the manager of a
+								company, etc. Our index measures the number and strength of such bridge edges. <br><br>
+								As we can see, the indicator of overlap increases over time. This means that the
+								corporate and government worlds are increasingly getting interconnected, and over the
+								years, this interconnection is increasing. Quite often, the flow of benefits between the
+								corporate and government worlds manifests itself through these bridges.<br><br>
+								Data sources: The data to build the network was obtained from different web sources. The
+								corporate data was obtained from the websites of ministry of corporate affairs (MCA),
+								and Bombay Stock Exchange (for public listed companies). The politician data was
+								obtained from India votes (Lok Sabha), and Wikipedia (Rajya Sabha and Prime/Chief
+								Ministers data). The bureaucrat data was obtained from Persmin (shared with us by Ashoka
+								university). The corporate network includes the BSE public listed companies, their
+								directors and managers, and a 1-hop neighbourhood of other companies and people to whom
+								this network is linked. The government network includes politicians who contested the
+								Lok Sabha elections for the years 2004, 2009, and 2014, IAS bureaucrats during the
+								period 1961 to 2017. The corporate network includes companies and their managers formed
+								since 1980 till date.
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+				<script>
+					// Get the modal
+					var modal2 = document.getElementById("myModal2");
+
+					// Get the button that opens the modal
+					var btn2 = document.getElementById("myBtn2");
+
+					// Get the <span> element that closes the modal
+					var span = document.getElementsByClassName("close")[1];
+
+					// When the user clicks the button, open the modal 
+					btn2.onclick = function () {
+						modal2.style.display = "block";
+					}
+
+					// When the user clicks on <span> (x), close the modal
+					span.onclick = function () {
+						modal2.style.display = "none";
+					}
+				</script>
+				<script>
+					// Themes begin
+					am4core.useTheme(am4themes_animated);
+
+					am4core.useTheme(am4themes_material);
+					// Themes end
+
+					var chart = am4core.create("chart1", am4charts.XYChart);
+
+					// Set up data source
+					chart.dataSource.url = "../csv data/Interlocks/interlockindex.csv";
+					chart.dataSource.parser = new am4core.CSVParser();
+					chart.dataSource.parser.options.useColumnNames = true;
+
+					// Create axes
+					var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+					categoryAxis.dataFields.category = "date";
+					categoryAxis.renderer.labels.template.rotation = -45;
+					var label = categoryAxis.renderer.labels.template;
+					label.truncate = true;
+					label.maxWidth = 100;
+					categoryAxis.renderer.minGridDistance = 0.1;
+					// label.maxheight = 50;
+					label.tooltipText = "{category}";
+
+					// Create value axis
+					var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+
+					// Create series
+					var series1 = chart.series.push(new am4charts.LineSeries());
+					series1.dataFields.valueY = "value";
+					series1.dataFields.categoryX = "date";
+					series1.name = "index";
+					series1.strokeWidth = 2;
+
+					series1.tooltipText = "{valueY}";
+					//series1.tensionX = 0.7;
+					series1.bullets.push(new am4charts.CircleBullet());
+
+					chart.cursor = new am4charts.XYCursor();
+					chart.cursor.xAxis = categoryAxis;
+					//chart.cursor.snapToSeries = series1;
+
+					//	chart.scrollbarX = new am4core.Scrollbar();
+					//	chart.scrollbarY = new am4core.Scrollbar();
+
+
+					// Add legend
+					chart.legend = new am4charts.Legend();
+				</script>
+
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<ul class="list-group links-list" style="width: 100%;text-align: center;">
+					<li id="B1" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:140%;border: 1px solid white; ">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Corporate Social
+							Responsibility
+						</span>
+					</li>
+					<li class="list-group-item lis " style="border: 1px solid white !important;">
+						<div class="Des1">
+							<a href="socialresponsibility.htm" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 133px;overflow: auto;color: #555555">
+									Corporate Social Responsibility (CSR) is a type of business self regulation,
+									where companies donate a part of their income into different sectors related to
+									public welfare,
+									for the purpose of social good. Such CSR donations also form a part of the
+									interlocks
+									that exist between the corporate and government networks.</p>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 text-center">
+				<ul class="list-group links-list" style="width: 100%;text-align: center;">
+					<li id="B2" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:140%;border: 1px solid white; ">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Political Funding
+						</span>
+					</li>
+					<li class="list-group-item lis " style="border: 1px solid white !important;">
+						<div class="Des2">
+							<a href="politicalfunding.htm" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 133px;overflow: auto;color: #555555">
+									Corporations often donate money to political parties.
+									Such donations are sometimes on the rise, especially before elections.
+									Needless to say, such donations also form a major chunk of the interlocks
+									that exist between the corporate and government networks.
+									As an outcome of these donations, companies often receive direct or indirect favours
+									from the political parties as well, in terms of legislations/policies passed in
+									favour of the companies,
+									tax benefits, clearances obtained, and so on. </p>
+							</a>
+						</div>
+
+
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="footer"></div>
+</body>
+
+</html>

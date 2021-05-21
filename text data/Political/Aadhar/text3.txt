@@ -1,0 +1,1 @@
+Aspects are subtopics of discussion within a given policy. We use topic modelling methods to uncover the aspects discussed in the mass media about each of the policies being investigated. We compute the mean relative aspect coverage across all of the seven news-sources that we consider. This helps us see what kind of aspects the mass media prefers to highlight or ignore.

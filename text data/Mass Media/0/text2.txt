@@ -1,0 +1,16 @@
+This graph shows how the aspects are being spoken about in mass media, in terms of the overall aggregate sentiment of all statements made on that aspect. The sentiment slant for any statement can be positive, negative, or neutral. For an aspect, we add up all the sentiment values of the statements belonging to the aspect.<br><br>
+
+An example of a statement with positive sentiment about Aadhaar:<b><br>
+“By the time the deadline set for the introduction of the Direct Benefit Transfer of LPG subsidy (DBTL) expired on Tuesday, Rs. 322.53 crore was transferred as LPG subsidy through bank accounts in over 67.38 lakh transactions. According to figures released on Monday, Ernakulam topped the list with the distribution of Rs. 38.06 crore through bank accounts of LPG subscribers in over 7.95 lakh transactions. Idukki was ranked at the bottom with the transfer of just Rs. 5.96 crore in over 1.26 lakh transactions....."</b>
+<br><br>
+An example of a statement with negative sentiment about Aadhaar:<br><b>
+"The State Secretariat of the Communist Party of India (Marxist) [CPI(M)] has asked the Union government to withdraw immediately its illegal decision to make Aadhaar linking compulsory for availing cooking gas subsidy. In a statement here on Tuesday, the party State secretariat said the Union Petroleum Ministry had virtually declared war on the common man by announcing that, effective from January 1, 2014, those who had not linked their gas consumer details to their bank accounts by using their Aadhaar would not receive any......."</b><br>
+The statements here validate the main pattern of news-sources not providing a high coverage to the issues directly impacting the poor. The aspects being discussed in these statements mostly relate to the middle class, and talk about LPG subsidy and DBT. We also see that the ruling party members speak for the policy, while the opposition speaks against it in a negative fashion.
+ <br><br>
+The graph about social media shows the sentiment expressed in social media tweets.
+Positive tweets include statements like
+<span style="color:blue;"><i> ‘@DVSBJP Thanks to Nandan Nilekani for the wonderful innovative idea in planning and implementing Aadhar. Earlier many people were opposing this but today everyone realising the importance of Aadhar.’</i></span><br><br>
+
+Negative tweets include statements like<span style="color:red;"><i> ‘Aadhar card is just like #pappu Crores spent to make it purposeful but still useless .’</i></span>
+ <br><br>
+The example tweets here seems to focus on the technical advancements that Aadhaar has brought to the country via paperless transaction and linkage to basic services, and how it is a crime that is being promoted for political mileage. However, they do not seem to talk about the issues that impact the poor directly, as is also evident in mass media.

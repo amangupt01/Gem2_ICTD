@@ -1,0 +1,22 @@
+Aspects are subtopics of discussion within a given policy. Some aspects of demonetisation are <i>[Negative impact of Demonetisation on small and medium scale industries and its employees, Long queues at banks and ATMs and cash crunch, Court verdicts related to demonetisation and penalties issued for black money hoarders, Appreciation by PM for supporting Demonetisation, Negative impact of demonetisation on real estate.]</i>
+We calculate aspect coverage as the relative number of words written about an aspect by a newspaper (in other words, it measures the space provided to an aspect by a newspaper). Aspect coverage for social media is similarly the relative number of tweets provided to an aspect by the followers of a newspaper (in other words, it measures the attention given to an aspect by the readers of the newspaper). The graph on the left shows the aspect coverage distribution for the newspaper, and the graph on the right shows the aspect coverage distribution for social media. Please click on the bars showing aspect coverage, to get an example of an article belonging to that aspect.<br><br>
+
+<b>Aspect Coverage of Demonetisation in Mass Media by news sources</b><br>
+
+The highest covered aspect in the mass media talks about the <i>[prime minister’s statements on the policy, and his encouragement to the general public and the poor to support the policy]</i> move to fight black money and corruption. In this aspect, 
+the articles cover the prime minister’s expression of gratitude towards the poor and middle-class people for bearing the troubles post its implementation, 
+and the benefits the policy would bring, like curbing the problems of black money, corruption, and terror funding, 
+which would lead to the benefit of the people in the long term, thus justifying the government narrative behind the policy.<br>
+The second highest covered aspect covers <i>[the opposition’s comments and protests against demonetization]</i> and the government narrative around it, and the prime minister’s statements against the opposition for denouncing the move,
+calling the opposition parties anti-poor and anti-common man. This aspect includes articles that primarily discuss the political debates around the move, and how it would benefit the ruling party in garnering votes in the upcoming election. The articles in this aspect revolves around the political blame games across prominent politicians, without much discussion of the actual issues related to these constituencies.<br>
+
+Since demonetisation was a highly politicized issue, the mass media generally covers mostly the politics involved, and covers the state’s narrative in support of the policy and the arguments arising from the opposition thereof. Thus, the reference to the poor and the middle class in mass media is only incidental, because the politicization of the issue included narratives and counter narratives built around these two classes.
+<br><br>
+
+
+
+<b>Aspect Coverage of Demonetisation in Social Media by news sources</b><br>
+
+We find that the social media community of followers of these news-sources echo the same trend. The top five aspects covered by the social media follower community are mostly the same as the top five aspects covered by the news-sources that they follow.
+
+

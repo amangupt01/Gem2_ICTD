@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Socio-Economic Development</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+	<style>
+		body {
+			font-family: 'Open Sans', 'serif';
+			font-size: 14px;
+			overflow: auto;
+		}
+
+		.loader {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url('../images/page-loader.gif') 50% 50% no-repeat rgb(249, 249, 249);
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/socioeco.min.css">
+
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script>
+		$(function () {
+			$("#header").load("header.html");
+			$("#footer").load("footer.html");
+		});
+	</script>
+</head>
+
+<body>
+	<div class="loader"></div>
+	<script type="text/javascript">
+		$(window).load(function () {
+			$(".loader").fadeOut("slow");
+		})
+	</script>
+	<div id="header"></div>
+	<br>
+	<div class="container-fluid">
+		<BR></BR>
+		<div class="row">
+			<div class="col-sm-8 text-left">
+				<p
+					style="margin-inline-end: 10%;margin-inline-start: 4%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+					Models for socio-economic development are useful for planners to build appropriate policies. Such
+					models are ideally constructed based on empirical data, and we take up the problem of working
+					towards a district development model for India by using two waves of census data. India has almost
+					six hundred districts, diversely spread apart in terms of both social and economic development, and
+					hence presents a unique natural experiment to understand how social and economic factors interplay
+					with one another. We present some interesting observations we are able to make from longitudinal
+					analysis of census data from the years 2001 and 2011.
+					<br><br>
+					Census variables have multiple parameters which report the number of households in a district for
+					each parameter. We group these mutually exclusive parameters into three broad parameter types of
+					rudimentary, intermediate, and advanced. As an example, firewood is considered as a rudimentary type
+					of fuel for cooking, kerosene and cow dung are grouped together as an intermediate type, and PNG,
+					LPG and biogas are grouped together as advanced types of fuel for cooking. We then do a k-means
+					clustering on the districts based on the percentage of households in each district that use
+					different types of fuel: rudimentary, intermediate, and advanced. This allows us to label each
+					district as a level-1/2/3 district: Level-1 districts predominantly use rudimentary types of fuel
+					for cooking, level-2 districts primarily use intermediate types of fuel, and level-3 districts
+					predominantly use advanced types of fuel for cooking. We follow the same method for all indicators
+					viz. Main Source of Light, Main Source of Water, Asset Ownership, Fuel for Cooking, Bathroom
+					Facility and Condition of Household.
+					<br><br>
+					Assigning levels to districts based on socio-economic parameters makes it easy to interpret and
+					further helps to easily compare districts with one another using simple probabilistic analysis to
+					determine broad patterns which we divide into 6 hypotheses. They not only highlight the key trends
+					in socio-economic development across the past few years, but also illustrate a good method for
+					simplifying complex multi-dimensional data into simple units for making comparison.
+				</p>
+			</div>
+			<div class="col-sm-4 text-left">
+				<!--
+	 						ADD 
+	 						MAP
+	 						HERE 
+			-->
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B1" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white"
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 1
+						</span>
+					</li>
+					<li class="list-group-item lis ">
+						<div class="Des1">
+							<a href="socio-econ-hypo/hypo-1-bf.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Non-agricultural districts
+									see the greatest improvement in all indicators </p>
+
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B2" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 2
+						</span>
+					</li>
+					<li class="list-group-item lis ">
+						<div class="Des2">
+							<a href="socio-econ-hypo/hypo-2.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Households prefer to invest
+									in assets first, followed by investment in other indicators which they can influence
+									through their own choices</p>
+							</a>
+						</div>
+
+
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B3" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white; "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 3
+						</span>
+					</li>
+					<li class="list-group-item lis">
+						<div class="Des3">
+							<a href="socio-econ-hypo/hypo-3.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Government has prioritized
+									electrification and lighting over other indicators that depend upon government
+									support</p>
+
+							</a>
+						</div>
+
+
+					</li>
+
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B4" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 4
+						</span>
+					</li>
+					<li class="list-group-item lis">
+						<div class="Des4">
+							<a href="socio-econ-hypo/hypo-4.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+
+									Discretionary spending by
+									households is closely related to literacy and formal employment</p>
+							</a>
+						</div>
+
+
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 text-center">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B3" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white; "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 5
+						</span>
+					</li>
+					<li class="list-group-item lis">
+						<div class="Des3">
+							<a href="socio-econ-hypo/hypo-5-bf.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Districts with more
+									manufacturing and services industries end up developing faster</p>
+
+							</a>
+						</div>
+
+
+					</li>
+
+				</ul>
+			</div>
+			<div class="col-sm-6">
+				<ul class="list-group links-list" style="box-shadow: 0px 0px 6px white;width: 100%;text-align: center;">
+					<li id="B4" class="list-group-item"
+						style="background:white;color: #05386b !important;font-size:130%;border: 1px solid white "
+						data-toggle="modal" data-target="#sector" data-toggle="tooltip" title="Hover to know more!">
+						<span style="font-family: 'Open Sans', 'serif'; text-align: center;">Hypothesis 6
+						</span>
+					</li>
+					<li class="list-group-item lis">
+						<div class="Des4">
+							<a href="socio-econ-hypo/hypo-6.html" style="text-decoration: none;">
+								<p
+									style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 75px;overflow: auto;color: #555555">
+									Female participation in the
+									workforce has decreased, primarily with a reduction in marginal employment
+								</p>
+							</a>
+						</div>
+
+
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<h1 style="text-align: center;color: #05386b !important;">Satellite Based Prediction</h1>
+			<p
+				style="margin-inline-end: 4%;margin-inline-start: 4%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+				We also use images from Landsat 7 satellite to train a district-level machine learning model to predict
+				the level of development. Once trained, this model was used to predict development labels for years from
+				2001 to 2011 and 2009 to 2019. A neural network based change classifier was made which would take labels
+				from 2001 to 2011 and predict the difference between ground truth in 2011 and 2001. Post this, for each
+				district, we calculate a count of number of indicators (out of 6) that have improved between 2001 and
+				2011. This change classifier was used to predict development from 2009 to 2019.
+
+				<br><br>
+				The map on the left shows the results of our change classifier between 2001 and 2011, and the map on the
+				right shows the change between 2009 and 2019. The map is color-coded on the basis of degree of change,
+				from red (symbolizing negative or no change) to green (symbolizing positive change). During 2001 to
+				2011, we can see that states from the eastern part of India (such as Orissa, Bihar, Jharkhand, and West
+				Bengal), large parts in central India (Uttar Pradesh and Madhya Pradesh), and the Northeast districts,
+				showed very little change. These indeed have been the poorest states of the country. In contrast, states
+				such as Gujarat, Maharashtra, and Rajasthan saw many districts as having improved substantially. We are
+				currently correlating these observations with potential explanatory factors such as the degree of
+				industrialization in these districts which could have led to more rapid growth as compared to other
+				non-industrialized and predominantly agricultural districts.During 2009-2019, there has been more
+				widespread growth in the poorest states, especially in West Bengal, Orissa, Uttar Pradesh, and Madhya
+				Pradesh. States like Jharkhand and Bihar have however not progressed substantially. This seems to tally
+				with our general observations of more development attention having been paid to some of the parts which
+				have developed during this time.
+
+			</p>
+			<div class="col-sm-6" style="height: 500px">
+				<!--
+	 						ADD 
+	 						MAP
+	 						HERE 
+			-->
+			</div>
+			<div class="col-sm-6" style="height: 500px">
+				<!--
+	 						ADD 
+	 						MAP
+	 						HERE 
+			-->
+			</div>
+		</div>
+	</div>
+
+	<div id="footer"></div>
+</body>
+
+</html>

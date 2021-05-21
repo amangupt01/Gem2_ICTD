@@ -1,0 +1,10 @@
+In this figure, we see how the highest covered entities (politicians, business persons, IAS officers, judiciary members, etc.) speak on a particular policy. We look at the sentiment slant of the statements made by them on the policy. The green coloured bars denote an aggregate positive sentiment, and the red coloured bars denote an aggregate negative sentiment.<br><br>
+
+
+We can see an expected trend from this plot the ruling party members (politicians) who are instrumental in the formulation and implementation of a policy speak positively on the policy, whereas the opposition members are either less positive (in cases where the policy was ideated when they were in power) or negative on the policy. One of the most interesting observations is that although the business persons get much less coverage in mass media compared to the politicians, they generally speak positively about the policies. Nandan Nilekani spoke most positively about Aadhaar, which is expected as he was the chairman of UIDAI (the organization that issues Aadhaar numbers to citizens) and the founder of Aadhaar project. The negative stance of academicians like Jean Dreze can be attributed to issues raised by him of starvation leading to deaths, which originated from a denial of food grains in the PDS system from a malfunctioning Aadhaar linkage of the beneficiary family.<br><br>
+
+
+An example of a statement with positive sentiment:<b> “Arun Jaitley during the discussion in the Rajya Sabha on the Aadhaar bill claimed that a sum of Rs. 14672 crores were saved in LPG subsidy for the year 2014-15 under the Direct Benefits Transfer scheme.”</b><br><br>
+
+An example of a statement with negative sentiment:<b> “ This is pointless, and also a violation of the act, since every rural household is entitled to apply for a job card whether they use it or not. This is what seems to be happening with the Aadhaar-based biometric card authentication which the economist Jean Dreze says is being pushed relentlessly by the central government. “ </b><br><br>
+

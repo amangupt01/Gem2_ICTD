@@ -1,0 +1,15 @@
+This graph shows how the aspects are being spoken about in mass media, in terms of the overall aggregate sentiment of all statements made on that aspect. The sentiment slant for any statement can be positive, negative, or neutral. For an aspect, we add up all the sentiment values of the statements belonging to the aspect.<br><br>
+
+An example of a statement with positive sentiment about GST:<br><b>
+"Union Minister for Urban Development Venkaiah Naidu on Sunday contested the former Union Finance Minister, taking credit for the gross domestic product (GDP) touching 5.7 per cent in the first quarter of this year.If what Mr. Chidambaram claimed was true, why was it that growth did not pick up when he was the Finance Minister, he asked at a function organised here on Sunday to meet industrialists and trade representatives....."</b>
+<br><br>
+An example of a statement with negative sentiment about GST:<br><b>
+"KOLKATA: In one of her sharpest attacks , exactly a month after demonetisation , Bengal chief minister said the PM had no moral right to continue and should step aside. If that was not enough, Banerjee questioned the Centre's hurry to introduce the Goods and Services Tax by next September, throwing the future of the tax regime into uncertainty.Calling the last one-month period the darkest in the country's economy, the CM said”</b><br><br>
+We can see that the statements made by politicians in mass media describe the main pattern here. Ruling party politicians again speak positively on the policy, whereas the opposition is negative. But none of the statements really cover the issues related to consumers. They are mostly related to the macro-economic statistics.<br><br>
+The graph about social media shows the sentiment expressed in social media tweets.
+Positive tweets include statements <span style="color:blue;"> <i>‘Big win for women across the nation!! Thank you @narendramodi ji for reducing GST on sanitary napkins to 0% (100% exemption) and ensuring good health & hygiene for women!! @PiyushGoyal ‘</i></span>
+<br><br>
+Negative tweets include statements like <span style="color:red;"><i> ‘#GSTForNewIndia Modi is praising GST actually is an exercise in self adulation, when he was Gujarat CM he had bitterly opposed it and also BJP as opposition, they had delayed GST for few years and introduced a flawed GST ‘</i></span>
+ <br><br>
+From the tweets, we find that social media too follows the trend of mass media, in not giving much coverage to the issues of the consumers, but focusing on medium and small enterprises (i.e., traders and companies). 
+

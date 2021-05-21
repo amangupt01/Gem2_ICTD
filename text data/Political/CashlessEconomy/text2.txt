@@ -1,0 +1,5 @@
+Cashless Economy was initiated by the current ruling party BJP, and saw the opposition having more negative comments, which is an exception to their otherwise mostly positive coverage. Some judiciary members, opposition party politicians, and bureaucrats do have a slightly negative slant, but since the coverage given to them is much less than that given to politicians, these views are hardly able to become mainstream. Among business persons, Mukesh Ambani is seen to speak positively on Cashless Payments, which is again an example of a businessperson following the government’s stance on policies.
+<br><br>
+An example of a statement with positive sentiment:<b> “The government is willing to strengthen laws to plug security holes in digital payment systems, and will soon invite ideas from users on how to protect consumer interests, union minister Ravishankar Prasad said on friday.”
+<br><br>
+An example of a statement with negative sentiment:<b> “We are not against a cashless economy but we don’t want it to be forced on the poor by the government," the 46-year- old Congress MP said."</b>

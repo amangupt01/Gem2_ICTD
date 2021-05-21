@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Political Funding</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+	<style>
+		body {
+			font-family: 'Open Sans', 'serif';
+			font-size: 14px;
+			overflow: auto;
+		}
+
+		.loader {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url('../images/page-loader.gif') 50% 50% no-repeat rgb(249, 249, 249);
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="style.min.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script>
+		$(function () {
+			$("#header").load("header.html");
+			$("#footer").load("footer.html");
+		});
+	</script>
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+</head>
+
+<body>
+	<div class="loader"></div>
+	<script type="text/javascript">
+		$(window).load(function () {
+			$(".loader").fadeOut("slow");
+		})
+	</script>
+	<div id="header"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<h1 class="text-center" style="color: #05386b !important;">Political Funding</h1>
+			<div class="col-sm-12" style="text-align:right;">
+				<p
+					style="margin-inline-end: 4%;text-align: left;margin-inline-start: 4%;padding: 2.5px 2.5px 2.5px 2.5px; margin-block-start:2%;">
+					Corporations often donate money to political parties.
+					Needless to say, such donations can be a means for corporations to influence policies and
+					receive various types of direct or indirect favours from political parties in terms of
+					legislations/policies
+					passed in favour of the companies, tax benefits, environmental clearances obtained, and so
+					on.<br><br>
+					In this page we show the donations received by major political parties of India in the last ten
+					years. <br>
+					Data source: This analysis is based on data obtained from<a href="http://myneta.info/party"
+						style="text-decoration: none;">
+						myneta.info/party</a>.
+					</a>
+
+				</p>
+				<button id="" class="btn btn-success myBtn" style="margin-inline-end: 4%;"><a
+						href="http://www.cse.iitd.ernet.in/~aseth/political-funding-report-2019.pdf"
+						style="text-decoration: none;">Research Paper</a> </button>
+
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="container-fluid">
+		<div class="row" style="height:150% !important;">
+
+			<div class="col-sm-12 text-left">
+				<h2 class="text-center" style="color: #05386b !important;">Donation Received By Parties in Last 10 years
+				</h2>
+				<div class="one" id="one" style="height: 500px;width: 100%;">
+				</div>
+				<p
+					style="margin-inline-end: 4%;margin-inline-start: 4%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+					The figure shows three bars referring to the BJP (Bhartiya Janata Party), INC (Indian National
+					Congress), and Rest which includes the following party’s CPI, CPI(M), BSP, AITC, NCP.<br>
+					From the figure we can conclude that the donation received by the national political parties have
+					been on rise. However, the rate with which donations has been received by BJP is much higher than
+					the rest of the political parties. In the Lok Sabha election of 2009, both BJP and Congress received
+					almost equal amounts. However subsequently in the next years till 2017, the amount received by BJP
+					was much more than all other parties. In the 2014 Lok Sabha Election, there was a massive increase
+					of 5 times over the previous donation amount in 2009 for BJP whereas INC got a mere jump of 1.5
+					times. BJP continued to receive large amounts post 2014. Total donations received by all political
+					parties from known sources with amount greater than Rs 20,000 in the year 2017-18 was Rs 469.82
+					crores.
+
+
+					</a>
+				</p>
+
+				<script>
+					// Themes begin
+					am4core.useTheme(am4themes_animated);
+
+					//am4core.useTheme(am4themes_material);
+					// Themes end
+
+					var chart = am4core.create("one", am4charts.XYChart);
+
+					// Set up data source
+					chart.dataSource.url =
+						"../Images/Corporate Interlocks/Political Funding/fig 1- Donation Received  By Parties in Last 10 years/fig1.csv";
+					chart.dataSource.parser = new am4core.CSVParser();
+					chart.dataSource.parser.options.useColumnNames = true;
+
+					// Create axes
+					var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+					categoryAxis.dataFields.category = "year";
+					categoryAxis.renderer.labels.template.rotation = -90;
+					var label = categoryAxis.renderer.labels.template;
+					label.truncate = true;
+					label.maxWidth = 100;
+					categoryAxis.renderer.minGridDistance = 0.1;
+					// label.maxheight = 50;
+					label.tooltipText = "{category}";
+
+					// Create value axis
+					var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+
+					// Create series
+					var series1 = chart.series.push(new am4charts.LineSeries());
+					series1.dataFields.valueY = "BJP";
+					series1.dataFields.categoryX = "year";
+					series1.name = "BJP";
+					series1.strokeWidth = 2;
+
+					series1.tooltipText = "₹ {valueY}";
+					//series1.tensionX = 0.7;
+					series1.bullets.push(new am4charts.CircleBullet());
+
+					var series2 = chart.series.push(new am4charts.LineSeries());
+					series2.dataFields.valueY = "CONGRESS";
+					series2.dataFields.categoryX = "year";
+					series2.name = "Congress";
+					series2.strokeWidth = 2;
+
+					series2.tooltipText = "₹ {valueY}";
+					//series1.tensionX = 0.7;
+					series2.bullets.push(new am4charts.CircleBullet());
+
+					var series3 = chart.series.push(new am4charts.LineSeries());
+					series3.dataFields.valueY = "REST";
+					series3.dataFields.categoryX = "year";
+					series3.name = "Rest";
+					series3.strokeWidth = 2;
+
+					series3.tooltipText = "₹ {valueY}";
+					//series1.tensionX = 0.7;
+					series3.bullets.push(new am4charts.CircleBullet());
+
+					chart.cursor = new am4charts.XYCursor();
+					chart.cursor.xAxis = categoryAxis;
+					//chart.cursor.snapToSeries = series1;
+
+					chart.scrollbarX = new am4core.Scrollbar();
+					//	chart.scrollbarY = new am4core.Scrollbar();
+
+
+					// Add legend
+					chart.legend = new am4charts.Legend();
+				</script>
+			</div>
+
+
+		</div>
+		<hr>
+
+		<div class="row" style="height:150% !important;">
+
+			<div class="col-sm-12 text-left">
+				<h2 class="text-center" style="color: #05386b !important;">Comparison in Donation received by BJP and
+					INC</h2>
+				<br>
+				<h4 class="text-center" style="color: #05386b !important;">Sectoral preferences for political funding to
+					BJP (2014-17) and INC (2009-13)</h4>
+				<div class="three" id="three" style="height: 500px;width: 100%;">
+				</div>
+				<p
+					style="margin-inline-end: 4%;margin-inline-start: 4%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+					We wanted to understand if companies from some specific sectors have a preference for one or the
+					other party,
+					BJP or INC. We therefore looked at the donation received by BJP and INC during the time
+					they had formed the government at the centre, and grouped the donations by the industry sector of
+					the companies.
+					Clearly the amount as well as the number of sectors donating to BJP is far more than that to INC
+					when INC was in power.<br>
+					For BJP many new sectors also emerged as major contributors which had not donated to INC earlier.
+					These sectoral preferences seem to be as follows: <br><br>
+					Those donating exclusively to BJP while BJP was in power: Agriculture and Allied Activities;
+					Auto Parts and Equipment; Electricity, Gas and Water; Finance; Manufacturing (Food and Stuff);
+					Speciality Retail; Pharmaceuticals and Transport, Storage and Communications.<br>
+					Those donating exclusively to INC while INC was in power: Cigarette and Tobacco Products;
+					Manufacturing (Textiles); Manufacturing (Wood Products). <br>
+					The rest of the sectors donated to both the parties with a significant increase in donations to BJP
+					by the
+					business services sector and a significant reduction in donations to BJP by the Manufacturing
+					(Machinery and Equipment) sector. <br>
+					It is entirely possible that the sectoral preferences many have been governed by other business
+					and economic factors important during the different periods when the BJP and INC were respectively
+					in power,
+					and may not denote any favouritism. However, it is very interesting to notice a wide divergence in
+					the shift of
+					funding preferences over time, and for entire industry sectors instead of specific companies,
+					which seems to point towards rational and strategic decision making for political funding.
+
+
+				</p>
+
+				<h4 class="text-center" style="color: #05386b !important;">Sectoral preferences for political funding to
+					BJP and INC during 2009-17</h4>
+				<div class="four" id="four" style="height: 500px;width: 100%;">
+				</div>
+				<p
+					style="margin-inline-end: 4%;margin-inline-start: 4%;padding: 2.5px 2.5px 2.5px 2.5px; font-size: 15px !important;">
+					The above figure mentions the amount donated by various sectors to INC and BJP in terms of
+					percentage
+					of the total donations received from these sectors. Majority of sectors which have donated to BJP
+					and INC
+					are common except Auto-Parts & Equipment and Electricity, Water & Gas sector which have donated only
+					to BJP
+					while Cigarette & Tobacco Products has donated only to INC.It emerges that the top three donor
+					sectors to both
+					parties are same.Manufacturing (Machinery & Equipment) sector is the highest contributor for both
+					parties
+					with 37% to BJP and 60% to INC. Second is Construction sector with 21% to BJP and 16% to INC and
+					third is
+					Manufacturing (Metals & Chemicals) with 12% to BJP and 11% ot INC .
+					Amount donated to BJP by sectors like Business Services(10%),
+					Manufacturing (Food Stuffs)[1.7%], Pharmaceuticals[1%] and Transport,
+					Storage & Communications[1%] is much more than that donated to INC.
+
+
+
+				</p>
+				<script>
+					am4core.ready(function () {
+
+						// Themes begin
+						am4core.useTheme(am4themes_animated);
+						// Themes end
+
+						// Create chart instance
+						var chart = am4core.create("three", am4charts.XYChart3D);
+						chart.dataSource.url =
+							"../Images/Corporate Interlocks/Political Funding/Fig 3- Comparison in Donation received by BJP and INC/fig3.csv";
+						chart.dataSource.parser = new am4core.CSVParser();
+						chart.dataSource.parser.options.useColumnNames = true;
+
+						// Create axes
+						var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+						categoryAxis.dataFields.category = "busscategory";
+						categoryAxis.renderer.grid.template.location = 0;
+						categoryAxis.renderer.minGridDistance = 30;
+						categoryAxis.renderer.labels.template.rotation = -90;
+						var label = categoryAxis.renderer.labels.template;
+						label.truncate = true;
+						label.maxWidth = 150;
+						label.offset = 0;
+						categoryAxis.renderer.minGridDistance = 0.1;
+						// label.maxheight = 50;
+						label.tooltipText = "{category}";
+
+						var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+						valueAxis.min = 0;
+						valueAxis.max = 10000000000;
+						valueAxis.strictMinMax = true;
+
+						var axisBreak = valueAxis.axisBreaks.create();
+						axisBreak.startValue = 200000000;
+						axisBreak.endValue = 10000000000;
+						axisBreak.breakSize = 0.0005;
+
+						// make break expand on hover
+						var hoverState = axisBreak.states.create("hover");
+						hoverState.properties.breakSize = 1;
+						hoverState.properties.opacity = 0.1;
+						hoverState.transitionDuration = 1500;
+
+						axisBreak.defaultState.transitionDuration = 1000;
+
+						// Create series
+						var series = chart.series.push(new am4charts.ColumnSeries3D());
+						series.dataFields.valueY = "BJP";
+						series.dataFields.categoryX = "busscategory";
+						series.name = "BJP";
+						series.clustered = false;
+						series.columns.template.tooltipText = "Donation received by BJP: [bold]{valueY}[/]";
+						series.columns.template.fillOpacity = 0.9;
+
+						var series2 = chart.series.push(new am4charts.ColumnSeries3D());
+						series2.dataFields.valueY = "INC";
+						series2.dataFields.categoryX = "busscategory";
+						series2.name = "INC";
+						series2.clustered = false;
+						series2.columns.template.tooltipText = "Donation received by INC : [bold]{valueY}[/]";
+
+					}); // end am4core.ready()
+				</script>
+				<script>
+					am4core.ready(function () {
+
+						// Themes begin
+						am4core.useTheme(am4themes_animated);
+						// Themes end
+
+						// Create chart instance
+						var chart = am4core.create("four", am4charts.XYChart3D);
+						chart.dataSource.url =
+							"../csv data/Interlocks/PoliticalFunding/bjp+incs_sector_lasttenyrs.csv";
+						chart.dataSource.parser = new am4core.CSVParser();
+						chart.dataSource.parser.options.useColumnNames = true;
+
+						// Create axes
+						var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+						categoryAxis.dataFields.category = "busscategory";
+						categoryAxis.renderer.grid.template.location = 0;
+						categoryAxis.renderer.minGridDistance = 30;
+						categoryAxis.renderer.labels.template.rotation = -90;
+						var label = categoryAxis.renderer.labels.template;
+						label.truncate = true;
+						label.maxWidth = 150;
+						label.offset = 0;
+						categoryAxis.renderer.minGridDistance = 0.1;
+						// label.maxheight = 50;
+						label.tooltipText = "{category}";
+
+						var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+
+						// Create series
+						var series = chart.series.push(new am4charts.ColumnSeries3D());
+						series.dataFields.valueY = "BJP";
+						series.dataFields.categoryX = "busscategory";
+						series.name = "BJP";
+						series.clustered = false;
+						series.columns.template.tooltipText = "Donation received by BJP: [bold]{valueY}[/] %";
+						series.columns.template.fillOpacity = 0.9;
+
+						var series2 = chart.series.push(new am4charts.ColumnSeries3D());
+						series2.dataFields.valueY = "INC";
+						series2.dataFields.categoryX = "busscategory";
+						series2.name = "INC";
+						series2.clustered = false;
+						series2.columns.template.tooltipText = "Donation received by INC : [bold]{valueY}[/] %";
+
+					}); // end am4core.ready()
+				</script>
+
+			</div>
+
+
+		</div>
+		<hr>
+		<div class="row">
+			<h2 class="text-center" style="color: #05386b !important;">Sectoral preferences of industry for political
+				funding</h2><br>
+
+			<div class="col-sm-6 text-left">
+				<h4 class="text-center" style="color: #05386b !important;">Sectoral preferences of the industry for
+					political funding to BJP</h4>
+				<div class="five" id="five" style="height: 500px;width: 100%;">
+
+				</div>
+				<p
+					style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 350px;overflow:auto;color: #555555">
+					Period 2009-14: Manufacturing (Metals and Chemicals) and Manufacturing (Food Stuffs) were the
+					highest contributors. Highest contributions by Companies of these sectors are: -<br><br>
+					(a)Manufacturing (Metals and Chemicals) - Zydus Animal Health Ltd, Torrent Pharmaceuticals.<br>
+					(b) Manufacturing (Food Stuffs) - RSPL Limited.<br><br>
+					Period 2014-17: Business Services sector was the highest contributor which had not donated to BJP
+					before 2014. Similarly sectors like Manufacturing (Machinery and Equipment) and Pharmaceuticals
+					sectors have contributed significantly and had not donated to BJP before 2014. Highest contributions
+					by Companies of these sectors are: -
+					<br><br>
+					(a) Business Services - Janta Nirvachak Electoral Trust, New Democratic Electoral Trust.<br>
+					(b) Manufacturing (Machinery and Equipment) - Hero Cycles Ltd, Torrent Power.<br>
+					(c) Pharmaceuticals - Cipla, Mirco Labs.<br>
+				</p>
+
+
+				<script>
+					am4core.ready(function () {
+
+						// Themes begin
+						am4core.useTheme(am4themes_animated);
+						// Themes end
+
+						// Create chart instance
+						var chart = am4core.create("five", am4charts.XYChart3D);
+						chart.dataSource.url =
+							"../csv data/Interlocks/PoliticalFunding/bjp.csv";
+						chart.dataSource.parser = new am4core.CSVParser();
+						chart.dataSource.parser.options.useColumnNames = true;
+
+						// Create axes
+						var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+						categoryAxis.dataFields.category = "tag";
+						categoryAxis.renderer.grid.template.location = 0;
+						categoryAxis.renderer.minGridDistance = 30;
+						categoryAxis.renderer.labels.template.rotation = -90;
+						var label = categoryAxis.renderer.labels.template;
+						label.truncate = true;
+						label.maxWidth = 150;
+						label.offset = 0;
+						categoryAxis.renderer.minGridDistance = 0.1;
+						// label.maxheight = 50;
+						label.tooltipText = "{category}";
+
+						var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+						valueAxis.min = 0;
+						valueAxis.max = 1000000000;
+						valueAxis.strictMinMax = true;
+
+						var axisBreak = valueAxis.axisBreaks.create();
+						axisBreak.startValue = 200000000;
+						axisBreak.endValue = 1000000000;
+						axisBreak.breakSize = 0.005;
+
+						// make break expand on hover
+						var hoverState = axisBreak.states.create("hover");
+						hoverState.properties.breakSize = 1;
+						hoverState.properties.opacity = 0.1;
+						hoverState.transitionDuration = 1500;
+
+						axisBreak.defaultState.transitionDuration = 1000;
+
+						// Create series
+						var series = chart.series.push(new am4charts.ColumnSeries3D());
+						series.dataFields.valueY = "pre";
+						series.dataFields.categoryX = "tag";
+						series.name = "Before 2014";
+						series.clustered = false;
+						series.columns.template.tooltipText = "Before 2014 :₹ [bold]{valueY}[/]";
+						series.columns.template.fillOpacity = 0.9;
+
+						var series2 = chart.series.push(new am4charts.ColumnSeries3D());
+						series2.dataFields.valueY = "post";
+						series2.dataFields.categoryX = "tag";
+						series2.name = "After 2014";
+						series2.clustered = false;
+						series2.columns.template.tooltipText = "After 2014 :₹ [bold]{valueY}[/]";
+
+					}); // end am4core.ready()
+				</script>
+			</div>
+			<div class="col-sm-6 text-left">
+				<h4 class="text-center" style="color: #05386b !important;">Sectoral preferences of the industry for
+					political funding to INC</h4>
+				<div class="six" id="six" style="height: 500px;width: 100%;">
+
+				</div>
+				<p
+					style="margin-inline-end: 4%;margin-inline-start: 4%;text-align: left !important;height: 350px;overflow: auto;color: #555555">
+					Period 2009-14: Manufacturing (Machinery and Equipment), Cigarette and Tobacco Products and
+					Manufacturing (Metals and Chemicals) were the highest contributors. Highest contributions by
+					Companies of these sectors are: -
+					<br><br>
+					(a) Manufacturing (Machinery and Equipment) - Torrent Power, MCO Ltd.<br>
+					(b) Cigarette and Tobacco Products – ITC.<br>
+					(c) Manufacturing (Metals and Chemicals) - Bharat Forge.<br><br>
+					Period 2014-17: Manufacturing (Machinery and Equipment), Manufacturing (Metals and Chemicals) were
+					the highest contributors. Highest contributions by Companies of these sectors are: -
+					<br><br>
+					(a) Manufacturing (Machinery and Equipment) - Torrent Power, Finolex Cables Ltd.<br>
+					(b) Manufacturing (Metals and Chemicals) - Nirma Chemicals, PI industries.<br>
+				</p>
+
+
+				<script>
+					am4core.ready(function () {
+
+						// Themes begin
+						am4core.useTheme(am4themes_animated);
+						// Themes end
+
+						// Create chart instance
+						var chart = am4core.create("six", am4charts.XYChart3D);
+						chart.dataSource.url =
+							"../csv data/Interlocks/PoliticalFunding/inc.csv";
+						chart.dataSource.parser = new am4core.CSVParser();
+						chart.dataSource.parser.options.useColumnNames = true;
+
+						// Create axes
+						var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+						categoryAxis.dataFields.category = "tag";
+						categoryAxis.renderer.grid.template.location = 0;
+						categoryAxis.renderer.minGridDistance = 30;
+						categoryAxis.renderer.labels.template.rotation = -90;
+						var label = categoryAxis.renderer.labels.template;
+						label.truncate = true;
+						label.maxWidth = 150;
+						label.offset = 0;
+						categoryAxis.renderer.minGridDistance = 0.1;
+						// label.maxheight = 50;
+						label.tooltipText = "{category}";
+
+						var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+						valueAxis.min = 0;
+						valueAxis.max = 10000000000;
+						valueAxis.strictMinMax = true;
+
+						var axisBreak = valueAxis.axisBreaks.create();
+						axisBreak.startValue = 200000000;
+						axisBreak.endValue = 10000000000;
+						axisBreak.breakSize = 0.0005;
+
+						// make break expand on hover
+						var hoverState = axisBreak.states.create("hover");
+						hoverState.properties.breakSize = 1;
+						hoverState.properties.opacity = 0.1;
+						hoverState.transitionDuration = 1500;
+
+						axisBreak.defaultState.transitionDuration = 1000;
+
+						// Create series
+						var series = chart.series.push(new am4charts.ColumnSeries3D());
+						series.dataFields.valueY = "pre";
+						series.dataFields.categoryX = "tag";
+						series.name = "Before 2014";
+						series.clustered = false;
+						series.columns.template.tooltipText = "Before 2014: ₹ [bold]{valueY}[/]";
+						series.columns.template.fillOpacity = 0.9;
+
+						var series2 = chart.series.push(new am4charts.ColumnSeries3D());
+						series2.dataFields.valueY = "post";
+						series2.dataFields.categoryX = "tag";
+						series2.name = "After 2014";
+						series2.clustered = false;
+						series2.columns.template.tooltipText = "After 2014 : ₹ [bold]{valueY}[/]";
+
+					}); // end am4core.ready()
+				</script>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 text-left">
+
+
+			</div>
+		</div>
+	</div>
+	<div id="footer"></div>
+
+</body>
+
+</html>
